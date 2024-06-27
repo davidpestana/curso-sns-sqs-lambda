@@ -1,6 +1,3 @@
-Aquí está la versión actualizada con enlaces a imágenes que deberían cargarse correctamente desde GitHub:
-
-```markdown
 # Introducción a AWS
 
 Amazon Web Services (AWS) es una plataforma de servicios en la nube que ofrece una vasta colección de servicios de infraestructura y aplicaciones, lo que permite a las empresas y desarrolladores de todos los tamaños implementar y gestionar aplicaciones de manera más eficiente y escalable. AWS es conocido por su modelo de pago por uso, su flexibilidad y su capacidad de escalado, lo que lo convierte en una opción popular para una amplia gama de aplicaciones y necesidades empresariales.
@@ -105,11 +102,11 @@ Amazon RDS facilita la configuración, operación y escalado de bases de datos r
 
 **Ejemplo de uso de Amazon RDS:**
 
-Si tienes una aplicación que requiere una base de datos SQL para almacenar datos transaccionales, puedes usar Amazon RDS para configurar y gestionar
+Si tienes una aplicación que requiere una base de datos SQL para almacenar datos transaccionales, puedes usar Amazon RDS para configurar y gestionar una base de datos relacional sin tener que preocuparte por las tareas administrativas.
 
- una base de datos relacional sin tener que preocuparte por las tareas administrativas.
+**Código de ejemplo para
 
-**Código de ejemplo para lanzar una instancia RDS usando AWS CLI:**
+ lanzar una instancia RDS usando AWS CLI:**
 
 ```sh
 aws rds create-db-instance --db-instance-identifier mydatabase --db-instance-class db.t2.micro --engine mysql --master-username admin --master-user-password password --allocated-storage 20
@@ -154,4 +151,3 @@ aws ec2 create-vpc --cidr-block 10.0.0.0/16
 ### Conclusión
 
 AWS ofrece una plataforma robusta y flexible que permite a las empresas innovar y escalar sus aplicaciones de manera eficiente. Con una amplia gama de servicios y una comunidad global de usuarios, AWS sigue siendo la opción preferida para muchas organizaciones que buscan aprovechar la potencia de la computación en la nube. Las características avanzadas, la seguridad, la escalabilidad y el modelo de pago por uso hacen de AWS una solución atractiva para una amplia variedad de casos de uso.
-```
