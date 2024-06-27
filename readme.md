@@ -1,79 +1,185 @@
 ### Curso de AWS Lambda con Gestión de Colas (SNS + SQS) en Java
 
-### Sesion 1
+### Sesión 1: [Introducción a AWS y Fundamentos de Lambda](sesion_1)
 
-#### Introducción a AWS
-Descripción general de AWS y sus servicios principales. [Introducción a AWS](sesion_1/introduccion_aws.md).
+#### 1.1. Introducción a AWS
+- **¿Qué es AWS?**
+  - Historia y evolución
+  - Principales servicios y su propósito
+- **Servicios principales de AWS**
+  - EC2, S3, RDS, IAM, VPC
 
-#### AWS Lambda
-Conceptos básicos y arquitectura de AWS Lambda. [AWS Lambda](sesion_1/aws_lambda.md).
+#### 1.2. AWS Lambda
+- **Conceptos básicos**
+  - Definición y uso
+  - Beneficios y limitaciones
+- **Arquitectura de AWS Lambda**
+  - Cómo funciona
+  - Componentes clave
+- **Uso de Lambda en diferentes escenarios**
+  - Casos de uso comunes
+  - Integraciones con otros servicios de AWS
 
-#### Configuración de Entorno de Desarrollo
-Guía para configurar el entorno de desarrollo en Java. [Configuración de Entorno de Desarrollo](sesion_1/configuracion_entorno.md).
+#### 1.3. Configuración de Entorno de Desarrollo
+- **Instalación y configuración de AWS CLI**
+  - Pasos para la instalación
+  - Configuración básica y avanzada
+- **Configuración de entorno para desarrollo en Java**
+  - SDK de AWS para Java
+  - Configuración del IDE (Eclipse, IntelliJ, etc.)
 
-#### Laboratorio: Primeros Pasos con Lambda en Java
-Laboratorio práctico para crear y desplegar una función Lambda en Java. [Laboratorio: Primeros Pasos con Lambda en Java](sesion_1/laboratorio_lambda.md).
+#### 1.4. Laboratorio: Primeros Pasos con Lambda en Java
+- **Descripción del laboratorio:**
+  - Crear una función Lambda simple en Java que recibe una cadena de texto, la convierte a mayúsculas y la devuelve.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java, IDE
+- **Ejercicio práctico:**
+  - Implementar la función Lambda en Java
+  - Desplegar la función en AWS Lambda
+  - Probar la función desde la consola de AWS
 
-### Sesion 2
+---
 
-#### Gestión de Dependencias y Uso de Librerías
-Uso de Maven para gestionar dependencias en proyectos Lambda. [Gestión de Dependencias y Uso de Librerías](sesion_2/gestion_dependencias.md).
+### Sesión 2: Avanzando con AWS Lambda y Introducción a SQS
 
-#### AWS Lambda Avanzado
-Características avanzadas de AWS Lambda y manejo de errores. [AWS Lambda Avanzado](sesion_2/lambda_avanzado.md).
+#### 2.1. Gestión de Dependencias y Uso de Librerías
+- **Uso de Maven para gestionar dependencias**
+  - Configuración de Maven en el proyecto
+  - Manejo de dependencias comunes
+- **Integración de bibliotecas externas en funciones Lambda**
 
-#### Laboratorio: Lambda Avanzado
-Laboratorio práctico para implementar funciones Lambda avanzadas. [Laboratorio: Lambda Avanzado](sesion_2/laboratorio_avanzado.md).
+#### 2.2. AWS Lambda Avanzado
+- **Variables de entorno y configuración**
+- **Manejo de eventos y errores**
+  - Tipos de errores
+  - Estrategias de manejo de errores
 
-#### Introducción a Amazon SQS
-Conceptos básicos de Amazon SQS y tipos de colas. [Introducción a Amazon SQS](sesion_2/introduccion_sqs.md).
+#### 2.3. Laboratorio: Lambda Avanzado
+- **Descripción del laboratorio:**
+  - Crear una función Lambda que maneje diferentes tipos de errores y registre los eventos en CloudWatch.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java, Maven
+- **Ejercicio práctico:**
+  - Implementar una función Lambda que maneje errores específicos
+  - Configurar variables de entorno
+  - Registrar eventos en CloudWatch
 
-#### Laboratorio: Configuración de SQS
-Laboratorio práctico para crear y configurar una cola SQS estándar. [Laboratorio: Configuración de SQS](sesion_2/laboratorio_sqs.md).
+#### 2.4. Introducción a Amazon SQS
+- **Conceptos básicos de SQS**
+- **Tipos de colas: Estándar y FIFO**
 
-### Sesion 3
+#### 2.5. Laboratorio: Configuración de SQS
+- **Descripción del laboratorio:**
+  - Crear y configurar una cola SQS estándar y enviar mensajes de prueba.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Crear una cola SQS
+  - Enviar mensajes a la cola
+  - Leer mensajes de la cola utilizando una aplicación Java
 
-#### Integración de AWS Lambda con SQS
-Configuración de triggers de SQS en funciones Lambda. [Integración de AWS Lambda con SQS](sesion_3/integracion_lambda_sqs.md).
+---
 
-#### Laboratorio: Procesamiento de Mensajes de SQS con Lambda
-Laboratorio práctico para procesar mensajes de SQS con Lambda. [Laboratorio: Procesamiento de Mensajes de SQS con Lambda](sesion_3/laboratorio_procesamiento_sqs.md).
+### Sesión 3: Integración de Lambda con SQS y SNS
 
-#### Introducción a Amazon SNS
-Conceptos básicos de Amazon SNS y creación de tópicos. [Introducción a Amazon SNS](sesion_3/introduccion_sns.md).
+#### 3.1. Integración de AWS Lambda con SQS
+- **Configuración de triggers de SQS en Lambda**
 
-#### Laboratorio: Configuración de SNS
-Laboratorio práctico para configurar un tópico SNS y suscripciones. [Laboratorio: Configuración de SNS](sesion_3/laboratorio_sns.md).
+#### 3.2. Laboratorio: Procesamiento de Mensajes de SQS con Lambda
+- **Descripción del laboratorio:**
+  - Implementar una función Lambda que procese mensajes de una cola SQS y los registre en CloudWatch.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Configurar SQS como desencadenador de Lambda
+  - Implementar la lógica de procesamiento de mensajes en la función Lambda
+  - Registrar la salida en CloudWatch
 
-#### Integración de SNS con SQS y Lambda
-Integración de SNS, SQS y Lambda para procesamiento de notificaciones. [Integración de SNS con SQS y Lambda](sesion_3/integracion_sns_sqs_lambda.md).
+#### 3.3. Introducción a Amazon SNS
+- **Conceptos básicos de SNS**
+- **Creación y configuración de tópicos**
 
-#### Laboratorio: Integración de SNS, SQS y Lambda
-Laboratorio práctico para crear una solución integrada de SNS, SQS y Lambda. [Laboratorio: Integración de SNS, SQS y Lambda](sesion_3/laboratorio_integracion.md).
+#### 3.4. Laboratorio: Configuración de SNS
+- **Descripción del laboratorio:**
+  - Crear un tópico SNS y suscribirse con una dirección de correo electrónico.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Crear un tópico SNS
+  - Suscribir una dirección de correo electrónico al tópico
+  - Enviar mensajes al tópico y verificar la recepción
 
-### Sesion 4
+#### 3.5. Integración de SNS con SQS y Lambda
+- **Enviar mensajes desde SNS a SQS**
+- **Configurar Lambda para procesar mensajes de SQS**
 
-#### Arquitectura de Eventos
-Conceptos de arquitectura orientada a eventos y patrones de diseño. [Arquitectura de Eventos](sesion_4/arquitectura_eventos.md).
+#### 3.6. Laboratorio: Integración de SNS, SQS y Lambda
+- **Descripción del laboratorio:**
+  - Crear una solución que integre SNS, SQS y Lambda para procesar notificaciones.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Crear un tópico SNS y una cola SQS
+  - Configurar el tópico SNS para enviar mensajes a la cola SQS
+  - Configurar Lambda para procesar mensajes de la cola SQS
 
-#### Laboratorio: Implementación de Arquitectura de Eventos
-Laboratorio práctico para implementar una arquitectura orientada a eventos. [Laboratorio: Implementación de Arquitectura de Eventos](sesion_4/laboratorio_arquitectura.md).
+---
 
-#### Monitoreo y Logging en AWS Lambda
-Uso de CloudWatch para monitoreo y logging de funciones Lambda. [Monitoreo y Logging en AWS Lambda](sesion_4/monitoreo_logging.md).
+### Sesión 4: Arquitectura de Eventos y Profundizando en AWS Lambda, SNS y SQS
 
-#### Laboratorio: Monitoreo y Logging
-Laboratorio práctico para configurar CloudWatch Logs y métricas para Lambda. [Laboratorio: Monitoreo y Logging](sesion_4/laboratorio_monitoreo.md).
+#### 4.1. Arquitectura de Eventos
+- **Conceptos de arquitectura orientada a eventos**
+- **Patrones de diseño para sistemas event-driven**
+- **Casos de uso y ejemplos prácticos**
 
-#### Seguridad en AWS Lambda, SNS y SQS
-Gestión de permisos y buenas prácticas de seguridad en Lambda, SNS y SQS. [Seguridad en AWS Lambda, SNS y SQS](sesion_4/seguridad.md).
+#### 4.2. Laboratorio: Implementación de Arquitectura de Eventos
+- **Descripción del laboratorio:**
+  - Diseñar e implementar una arquitectura orientada a eventos utilizando SNS, SQS y Lambda.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Diseñar un sistema basado en eventos
+  - Implementar los componentes utilizando SNS, SQS y Lambda
+  - Probar el flujo de eventos y la interacción entre componentes
 
-#### Laboratorio: Seguridad y Permisos
-Laboratorio práctico para configurar roles y políticas de IAM para Lambda, SNS y SQS. [Laboratorio: Seguridad y Permisos](sesion_4/laboratorio_seguridad.md).
+#### 4.3. Monitoreo y Logging en AWS Lambda
+- **Uso de CloudWatch para monitoreo**
+- **Configuración de alarmas y métricas**
 
-#### Optimización y Escalabilidad
-Ajustes de rendimiento y escalado automático de funciones Lambda. [Optimización y Escalabilidad](sesion_4/optimizacion_escalabilidad.md).
+#### 4.4. Laboratorio: Monitoreo y Logging
+- **Descripción del laboratorio:**
+  - Implementar y configurar CloudWatch Logs y métricas para una función Lambda.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Configurar CloudWatch Logs para una función Lambda
+  - Crear métricas personalizadas
+  - Configurar alarmas basadas en las métricas
 
-#### Laboratorio: Optimización y Escalabilidad
-Laboratorio práctico para implementar configuraciones de escalado automático y optimización de rendimiento. [Laboratorio: Optimización y Escalabilidad](sesion_4/laboratorio_optimizacion.md).
+#### 4.5. Seguridad en AWS Lambda, SNS y SQS
+- **Gestión de permisos con IAM**
+- **Buenas prácticas de seguridad**
 
+#### 4.6. Laboratorio: Seguridad y Permisos
+- **Descripción del laboratorio:**
+  - Configurar roles y políticas de IAM para Lambda, SNS y SQS.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Crear roles y políticas de IAM para una función Lambda
+  - Asignar permisos adecuados para SNS y SQS
+  - Probar el acceso y las restricciones de seguridad
+
+#### 4.7. Optimización y Escalabilidad
+- **Ajustes de rendimiento**
+- **Escalado automático y configuraciones avanzadas**
+
+#### 4.8. Laboratorio: Optimización y Escalabilidad
+- **Descripción del laboratorio:**
+  - Implementar configuraciones de escalado automático y optimización de rendimiento para Lambda, SNS y SQS.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Configurar el escalado automático para una función Lambda
+  - Ajustar parámetros de rendimiento
+  - Probar la solución bajo diferentes cargas
