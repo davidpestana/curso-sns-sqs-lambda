@@ -1,20 +1,42 @@
-### Sesion 3
+### Sesión 3: Integración de Lambda con SQS y SNS
 
-#### Integración de AWS Lambda con SQS
-Configuración de triggers de SQS en funciones Lambda. [Integración de AWS Lambda con SQS](integracion_lambda_sqs.md).
+#### 3.1. [Integración de AWS Lambda con SQS](integracion_lambda_sqs.md)
+- **Configuración de triggers de SQS en Lambda**
 
-#### Laboratorio: Procesamiento de Mensajes de SQS con Lambda
-Laboratorio práctico para procesar mensajes de SQS con Lambda. [Laboratorio: Procesamiento de Mensajes de SQS con Lambda](laboratorio_procesamiento_sqs.md).
+#### 3.2. [Laboratorio: Procesamiento de Mensajes de SQS con Lambda](laboratorio_procesamiento_sqs.md)
+- **Descripción del laboratorio:**
+  - Implementar una función Lambda que procese mensajes de una cola SQS y los registre en CloudWatch.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Configurar SQS como desencadenador de Lambda
+  - Implementar la lógica de procesamiento de mensajes en la función Lambda
+  - Registrar la salida en CloudWatch
 
-#### Introducción a Amazon SNS
-Conceptos básicos de Amazon SNS y creación de tópicos. [Introducción a Amazon SNS](introduccion_sns.md).
+#### 3.3. [Introducción a Amazon SNS](introduccion_sns.md)
+- **Conceptos básicos de SNS**
+- **Creación y configuración de tópicos**
 
-#### Laboratorio: Configuración de SNS
-Laboratorio práctico para configurar un tópico SNS y suscripciones. [Laboratorio: Configuración de SNS](laboratorio_sns.md).
+#### 3.4. [Laboratorio: Configuración de SNS](laboratorio_sns.md)
+- **Descripción del laboratorio:**
+  - Crear un tópico SNS y suscribirse con una dirección de correo electrónico.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Crear un tópico SNS
+  - Suscribir una dirección de correo electrónico al tópico
+  - Enviar mensajes al tópico y verificar la recepción
 
-#### Integración de SNS con SQS y Lambda
-Integración de SNS, SQS y Lambda para procesamiento de notificaciones. [Integración de SNS con SQS y Lambda](integracion_sns_sqs_lambda.md).
+#### 3.5. [Integración de SNS con SQS y Lambda](integracion_sns_sqs_lambda.md)
+- **Enviar mensajes desde SNS a SQS**
+- **Configurar Lambda para procesar mensajes de SQS**
 
-#### Laboratorio: Integración de SNS, SQS y Lambda
-Laboratorio práctico para crear una solución integrada de SNS, SQS y Lambda. [Laboratorio: Integración de SNS, SQS y Lambda](laboratorio_integracion.md).
-
+#### 3.6. [Laboratorio: Integración de SNS, SQS y Lambda](laboratorio_integracion.md)
+- **Descripción del laboratorio:**
+  - Crear una solución que integre SNS, SQS y Lambda para procesar notificaciones.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Crear un tópico SNS y una cola SQS
+  - Configurar el tópico SNS para enviar mensajes a la cola SQS
+  - Configurar Lambda para procesar mensajes de la cola SQS

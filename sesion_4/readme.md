@@ -1,26 +1,58 @@
-### Sesion 4
+### Sesión 4: Arquitectura de Eventos y Profundizando en AWS Lambda, SNS y SQS
 
-#### Arquitectura de Eventos
-Conceptos de arquitectura orientada a eventos y patrones de diseño. [Arquitectura de Eventos](arquitectura_eventos.md).
+#### 4.1. [Arquitectura de Eventos](arquitectura_eventos.md)
+- **Conceptos de arquitectura orientada a eventos**
+- **Patrones de diseño para sistemas event-driven**
+- **Casos de uso y ejemplos prácticos**
 
-#### Laboratorio: Implementación de Arquitectura de Eventos
-Laboratorio práctico para implementar una arquitectura orientada a eventos. [Laboratorio: Implementación de Arquitectura de Eventos](laboratorio_arquitectura.md).
+#### 4.2. [Laboratorio: Implementación de Arquitectura de Eventos](laboratorio_arquitectura.md)
+- **Descripción del laboratorio:**
+  - Diseñar e implementar una arquitectura orientada a eventos utilizando SNS, SQS y Lambda.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Diseñar un sistema basado en eventos
+  - Implementar los componentes utilizando SNS, SQS y Lambda
+  - Probar el flujo de eventos y la interacción entre componentes
 
-#### Monitoreo y Logging en AWS Lambda
-Uso de CloudWatch para monitoreo y logging de funciones Lambda. [Monitoreo y Logging en AWS Lambda](monitoreo_logging.md).
+#### 4.3. [Monitoreo y Logging en AWS Lambda](monitoreo_logging.md)
+- **Uso de CloudWatch para monitoreo**
+- **Configuración de alarmas y métricas**
 
-#### Laboratorio: Monitoreo y Logging
-Laboratorio práctico para configurar CloudWatch Logs y métricas para Lambda. [Laboratorio: Monitoreo y Logging](laboratorio_monitoreo.md).
+#### 4.4. [Laboratorio: Monitoreo y Logging](laboratorio_monitoreo.md)
+- **Descripción del laboratorio:**
+  - Implementar y configurar CloudWatch Logs y métricas para una función Lambda.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Configurar CloudWatch Logs para una función Lambda
+  - Crear métricas personalizadas
+  - Configurar alarmas basadas en las métricas
 
-#### Seguridad en AWS Lambda, SNS y SQS
-Gestión de permisos y buenas prácticas de seguridad en Lambda, SNS y SQS. [Seguridad en AWS Lambda, SNS y SQS](seguridad.md).
+#### 4.5. [Seguridad en AWS Lambda, SNS y SQS](seguridad.md)
+- **Gestión de permisos con IAM**
+- **Buenas prácticas de seguridad**
 
-#### Laboratorio: Seguridad y Permisos
-Laboratorio práctico para configurar roles y políticas de IAM para Lambda, SNS y SQS. [Laboratorio: Seguridad y Permisos](laboratorio_seguridad.md).
+#### 4.6. [Laboratorio: Seguridad y Permisos](laboratorio_seguridad.md)
+- **Descripción del laboratorio:**
+  - Configurar roles y políticas de IAM para Lambda, SNS y SQS.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Crear roles y políticas de IAM para una función Lambda
+  - Asignar permisos adecuados para SNS y SQS
+  - Probar el acceso y las restricciones de seguridad
 
-#### Optimización y Escalabilidad
-Ajustes de rendimiento y escalado automático de funciones Lambda. [Optimización y Escalabilidad](optimizacion_escalabilidad.md).
+#### 4.7. [Optimización y Escalabilidad](optimizacion_escalabilidad.md)
+- **Ajustes de rendimiento**
+- **Escalado automático y configuraciones avanzadas**
 
-#### Laboratorio: Optimización y Escalabilidad
-Laboratorio práctico para implementar configuraciones de escalado automático y optimización de rendimiento. [Laboratorio: Optimización y Escalabilidad](laboratorio_optimizacion.md).
-
+#### 4.8. [Laboratorio: Optimización y Escalabilidad](laboratorio_optimizacion.md)
+- **Descripción del laboratorio:**
+  - Implementar configuraciones de escalado automático y optimización de rendimiento para Lambda, SNS y SQS.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Configurar el escalado automático para una función Lambda
+  - Ajustar parámetros de rendimiento
+  - Probar la solución bajo diferentes cargas

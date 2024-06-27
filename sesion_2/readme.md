@@ -1,17 +1,37 @@
-### Sesion 2
+### Sesión 2: Avanzando con AWS Lambda y Introducción a SQS
 
-#### Gestión de Dependencias y Uso de Librerías
-Uso de Maven para gestionar dependencias en proyectos Lambda. [Gestión de Dependencias y Uso de Librerías](gestion_dependencias.md).
+#### 2.1. [Gestión de Dependencias y Uso de Librerías](gestion_dependencias.md)
+- **Uso de Maven para gestionar dependencias**
+  - Configuración de Maven en el proyecto
+  - Manejo de dependencias comunes
+- **Integración de bibliotecas externas en funciones Lambda**
 
-#### AWS Lambda Avanzado
-Características avanzadas de AWS Lambda y manejo de errores. [AWS Lambda Avanzado](lambda_avanzado.md).
+#### 2.2. [AWS Lambda Avanzado](lambda_avanzado.md)
+- **Variables de entorno y configuración**
+- **Manejo de eventos y errores**
+  - Tipos de errores
+  - Estrategias de manejo de errores
 
-#### Laboratorio: Lambda Avanzado
-Laboratorio práctico para implementar funciones Lambda avanzadas. [Laboratorio: Lambda Avanzado](laboratorio_avanzado.md).
+#### 2.3. [Laboratorio: Lambda Avanzado](laboratorio_avanzado.md)
+- **Descripción del laboratorio:**
+  - Crear una función Lambda que maneje diferentes tipos de errores y registre los eventos en CloudWatch.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java, Maven
+- **Ejercicio práctico:**
+  - Implementar una función Lambda que maneje errores específicos
+  - Configurar variables de entorno
+  - Registrar eventos en CloudWatch
 
-#### Introducción a Amazon SQS
-Conceptos básicos de Amazon SQS y tipos de colas. [Introducción a Amazon SQS](introduccion_sqs.md).
+#### 2.4. [Introducción a Amazon SQS](introduccion_sqs.md)
+- **Conceptos básicos de SQS**
+- **Tipos de colas: Estándar y FIFO**
 
-#### Laboratorio: Configuración de SQS
-Laboratorio práctico para crear y configurar una cola SQS estándar. [Laboratorio: Configuración de SQS](laboratorio_sqs.md).
-
+#### 2.5. [Laboratorio: Configuración de SQS](laboratorio_sqs.md)
+- **Descripción del laboratorio:**
+  - Crear y configurar una cola SQS estándar y enviar mensajes de prueba.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Crear una cola SQS
+  - Enviar mensajes a la cola
+  - Leer mensajes de la cola utilizando una aplicación Java
