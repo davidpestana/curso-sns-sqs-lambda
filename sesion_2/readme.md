@@ -1,23 +1,24 @@
 # Sesion 2
 
 ## Contenido de la sesión
-### Gestion Dependencias.Md
 
-Uso de Maven para gestionar dependencias en proyectos Lambda. Puedes consultar más detalles en el archivo [Gestion Dependencias.Md](gestion_dependencias.md).
+### Gestión de Dependencias y Uso de Librerías
 
-### Lambda Avanzado.Md
+Uso de Maven para gestionar dependencias en proyectos Lambda. Puedes consultar más detalles en el archivo [Gestión de Dependencias y Uso de Librerías](gestion_dependencias.md).
 
-Características avanzadas de AWS Lambda y manejo de errores. Puedes consultar más detalles en el archivo [Lambda Avanzado.Md](lambda_avanzado.md).
+### AWS Lambda Avanzado
 
-### Laboratorio Avanzado.Md
+Características avanzadas de AWS Lambda y manejo de errores. Puedes consultar más detalles en el archivo [AWS Lambda Avanzado](lambda_avanzado.md).
 
-Laboratorio práctico para implementar funciones Lambda avanzadas. Puedes consultar más detalles en el archivo [Laboratorio Avanzado.Md](laboratorio_avanzado.md).
+### Laboratorio: Lambda Avanzado
 
-### Introduccion Sqs.Md
+Laboratorio práctico para implementar funciones Lambda avanzadas. Puedes consultar más detalles en el archivo [Laboratorio: Lambda Avanzado](laboratorio_avanzado.md).
 
-Conceptos básicos de Amazon SQS y tipos de colas. Puedes consultar más detalles en el archivo [Introduccion Sqs.Md](introduccion_sqs.md).
+### Introducción a Amazon SQS
 
-### Laboratorio Sqs.Md
+Conceptos básicos de Amazon SQS y tipos de colas. Puedes consultar más detalles en el archivo [Introducción a Amazon SQS](introduccion_sqs.md).
 
-Laboratorio práctico para crear y configurar una cola SQS estándar. Puedes consultar más detalles en el archivo [Laboratorio Sqs.Md](laboratorio_sqs.md).
+### Laboratorio: Configuración de SQS
+
+Laboratorio práctico para crear y configurar una cola SQS estándar. Puedes consultar más detalles en el archivo [Laboratorio: Configuración de SQS](laboratorio_sqs.md).
 

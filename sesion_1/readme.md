@@ -1,19 +1,20 @@
 # Sesion 1
 
 ## Contenido de la sesión
-### Introduccion Aws.Md
 
-Descripción general de AWS y sus servicios principales. Puedes consultar más detalles en el archivo [Introduccion Aws.Md](introduccion_aws.md).
+### Introducción a AWS
 
-### Aws Lambda.Md
+Descripción general de AWS y sus servicios principales. Puedes consultar más detalles en el archivo [Introducción a AWS](introduccion_aws.md).
 
-Conceptos básicos y arquitectura de AWS Lambda. Puedes consultar más detalles en el archivo [Aws Lambda.Md](aws_lambda.md).
+### AWS Lambda
 
-### Configuracion Entorno.Md
+Conceptos básicos y arquitectura de AWS Lambda. Puedes consultar más detalles en el archivo [AWS Lambda](aws_lambda.md).
 
-Guía para configurar el entorno de desarrollo en Java. Puedes consultar más detalles en el archivo [Configuracion Entorno.Md](configuracion_entorno.md).
+### Configuración de Entorno de Desarrollo
 
-### Laboratorio Lambda.Md
+Guía para configurar el entorno de desarrollo en Java. Puedes consultar más detalles en el archivo [Configuración de Entorno de Desarrollo](configuracion_entorno.md).
 
-Laboratorio práctico para crear y desplegar una función Lambda en Java. Puedes consultar más detalles en el archivo [Laboratorio Lambda.Md](laboratorio_lambda.md).
+### Laboratorio: Primeros Pasos con Lambda en Java
+
+Laboratorio práctico para crear y desplegar una función Lambda en Java. Puedes consultar más detalles en el archivo [Laboratorio: Primeros Pasos con Lambda en Java](laboratorio_lambda.md).
 
