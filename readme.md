@@ -40,21 +40,21 @@
 
 ---
 
-### Sesión 2: Avanzando con AWS Lambda y Introducción a SQS
+### Sesión 2: [Avanzando con AWS Lambda y Introducción a SQS](sesion_2)
 
-#### 2.1. Gestión de Dependencias y Uso de Librerías
+#### 2.1. [Gestión de Dependencias y Uso de Librerías](sesion_2/gestion_dependencias.md)
 - **Uso de Maven para gestionar dependencias**
   - Configuración de Maven en el proyecto
   - Manejo de dependencias comunes
 - **Integración de bibliotecas externas en funciones Lambda**
 
-#### 2.2. AWS Lambda Avanzado
+#### 2.2. [AWS Lambda Avanzado](sesion_2/lambda_avanzado.md)
 - **Variables de entorno y configuración**
 - **Manejo de eventos y errores**
   - Tipos de errores
   - Estrategias de manejo de errores
 
-#### 2.3. Laboratorio: Lambda Avanzado
+#### 2.3. [Laboratorio: Lambda Avanzado](sesion_2/laboratorio_avanzado.md)
 - **Descripción del laboratorio:**
   - Crear una función Lambda que maneje diferentes tipos de errores y registre los eventos en CloudWatch.
 - **Recursos necesarios:**
@@ -64,11 +64,11 @@
   - Configurar variables de entorno
   - Registrar eventos en CloudWatch
 
-#### 2.4. Introducción a Amazon SQS
+#### 2.4. [Introducción a Amazon SQS](sesion_2/introduccion_sqs.md)
 - **Conceptos básicos de SQS**
 - **Tipos de colas: Estándar y FIFO**
 
-#### 2.5. Laboratorio: Configuración de SQS
+#### 2.5. [Laboratorio: Configuración de SQS](sesion_2/laboratorio_sqs.md)
 - **Descripción del laboratorio:**
   - Crear y configurar una cola SQS estándar y enviar mensajes de prueba.
 - **Recursos necesarios:**
@@ -80,12 +80,12 @@
 
 ---
 
-### Sesión 3: Integración de Lambda con SQS y SNS
+### Sesión 3: [Integración de Lambda con SQS y SNS](sesion_3)
 
-#### 3.1. Integración de AWS Lambda con SQS
+#### 3.1. [Integración de AWS Lambda con SQS](sesion_3/integracion_lambda_sqs.md)
 - **Configuración de triggers de SQS en Lambda**
 
-#### 3.2. Laboratorio: Procesamiento de Mensajes de SQS con Lambda
+#### 3.2. [Laboratorio: Procesamiento de Mensajes de SQS con Lambda](sesion_3/laboratorio_procesamiento_sqs.md)
 - **Descripción del laboratorio:**
   - Implementar una función Lambda que procese mensajes de una cola SQS y los registre en CloudWatch.
 - **Recursos necesarios:**
@@ -95,11 +95,11 @@
   - Implementar la lógica de procesamiento de mensajes en la función Lambda
   - Registrar la salida en CloudWatch
 
-#### 3.3. Introducción a Amazon SNS
+#### 3.3. [Introducción a Amazon SNS](sesion_3/introduccion_sns.md)
 - **Conceptos básicos de SNS**
 - **Creación y configuración de tópicos**
 
-#### 3.4. Laboratorio: Configuración de SNS
+#### 3.4. [Laboratorio: Configuración de SNS](sesion_3/laboratorio_sns.md)
 - **Descripción del laboratorio:**
   - Crear un tópico SNS y suscribirse con una dirección de correo electrónico.
 - **Recursos necesarios:**
@@ -109,11 +109,11 @@
   - Suscribir una dirección de correo electrónico al tópico
   - Enviar mensajes al tópico y verificar la recepción
 
-#### 3.5. Integración de SNS con SQS y Lambda
+#### 3.5. [Integración de SNS con SQS y Lambda](sesion_3/integracion_sns_sqs_lambda.md)
 - **Enviar mensajes desde SNS a SQS**
 - **Configurar Lambda para procesar mensajes de SQS**
 
-#### 3.6. Laboratorio: Integración de SNS, SQS y Lambda
+#### 3.6. [Laboratorio: Integración de SNS, SQS y Lambda](sesion_3/laboratorio_integracion.md)
 - **Descripción del laboratorio:**
   - Crear una solución que integre SNS, SQS y Lambda para procesar notificaciones.
 - **Recursos necesarios:**
@@ -125,14 +125,14 @@
 
 ---
 
-### Sesión 4: Arquitectura de Eventos y Profundizando en AWS Lambda, SNS y SQS
+### Sesión 4: [Arquitectura de Eventos y Profundizando en AWS Lambda, SNS y SQS](sesion_4)
 
-#### 4.1. Arquitectura de Eventos
+#### 4.1. [Arquitectura de Eventos](sesion_4/arquitectura_eventos.md)
 - **Conceptos de arquitectura orientada a eventos**
 - **Patrones de diseño para sistemas event-driven**
 - **Casos de uso y ejemplos prácticos**
 
-#### 4.2. Laboratorio: Implementación de Arquitectura de Eventos
+#### 4.2. [Laboratorio: Implementación de Arquitectura de Eventos](sesion_4/laboratorio_arquitectura.md)
 - **Descripción del laboratorio:**
   - Diseñar e implementar una arquitectura orientada a eventos utilizando SNS, SQS y Lambda.
 - **Recursos necesarios:**
@@ -142,11 +142,11 @@
   - Implementar los componentes utilizando SNS, SQS y Lambda
   - Probar el flujo de eventos y la interacción entre componentes
 
-#### 4.3. Monitoreo y Logging en AWS Lambda
+#### 4.3. [Monitoreo y Logging en AWS Lambda](sesion_4/monitoreo_logging.md)
 - **Uso de CloudWatch para monitoreo**
 - **Configuración de alarmas y métricas**
 
-#### 4.4. Laboratorio: Monitoreo y Logging
+#### 4.4. [Laboratorio: Monitoreo y Logging](sesion_4/laboratorio_monitoreo.md)
 - **Descripción del laboratorio:**
   - Implementar y configurar CloudWatch Logs y métricas para una función Lambda.
 - **Recursos necesarios:**
@@ -156,11 +156,11 @@
   - Crear métricas personalizadas
   - Configurar alarmas basadas en las métricas
 
-#### 4.5. Seguridad en AWS Lambda, SNS y SQS
+#### 4.5. [Seguridad en AWS Lambda, SNS y SQS](sesion_4/seguridad.md)
 - **Gestión de permisos con IAM**
 - **Buenas prácticas de seguridad**
 
-#### 4.6. Laboratorio: Seguridad y Permisos
+#### 4.6. [Laboratorio: Seguridad y Permisos](sesion_4/laboratorio_seguridad.md)
 - **Descripción del laboratorio:**
   - Configurar roles y políticas de IAM para Lambda, SNS y SQS.
 - **Recursos necesarios:**
@@ -170,11 +170,11 @@
   - Asignar permisos adecuados para SNS y SQS
   - Probar el acceso y las restricciones de seguridad
 
-#### 4.7. Optimización y Escalabilidad
+#### 4.7. [Optimización y Escalabilidad](sesion_4/optimizacion_escalabilidad.md)
 - **Ajustes de rendimiento**
 - **Escalado automático y configuraciones avanzadas**
 
-#### 4.8. Laboratorio: Optimización y Escalabilidad
+#### 4.8. [Laboratorio: Optimización y Escalabilidad](sesion_4/laboratorio_optimizacion.md)
 - **Descripción del laboratorio:**
   - Implementar configuraciones de escalado automático y optimización de rendimiento para Lambda, SNS y SQS.
 - **Recursos necesarios:**
