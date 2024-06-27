@@ -1,4 +1,7 @@
-### Introducción a AWS
+Aquí está la versión actualizada con enlaces a imágenes que deberían cargarse correctamente desde GitHub:
+
+```markdown
+# Introducción a AWS
 
 Amazon Web Services (AWS) es una plataforma de servicios en la nube que ofrece una vasta colección de servicios de infraestructura y aplicaciones, lo que permite a las empresas y desarrolladores de todos los tamaños implementar y gestionar aplicaciones de manera más eficiente y escalable. AWS es conocido por su modelo de pago por uso, su flexibilidad y su capacidad de escalado, lo que lo convierte en una opción popular para una amplia gama de aplicaciones y necesidades empresariales.
 
@@ -19,7 +22,7 @@ AWS fue lanzado oficialmente en 2006 con la introducción de dos servicios funda
 - **2016:** AWS celebra su décimo aniversario con más de 70 servicios disponibles.
 - **2020:** AWS cuenta con más de 200 servicios y una presencia global significativa con múltiples regiones y zonas de disponibilidad.
 
-![Historia de AWS](https://d1.awsstatic.com/logos/aws-logo-lockups/poweredbyaws/Powered-by-aws.png)
+![AWS Evolution](https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg)
 
 ##### Principales servicios y su propósito
 
@@ -102,11 +105,11 @@ Amazon RDS facilita la configuración, operación y escalado de bases de datos r
 
 **Ejemplo de uso de Amazon RDS:**
 
-Si tienes una aplicación que requiere una base de datos SQL para almacenar datos transaccionales, puedes usar Amazon RDS para configurar y gestionar una base de datos relacional sin tener que preocuparte por las tareas administrativas.
+Si tienes una aplicación que requiere una base de datos SQL para almacenar datos transaccionales, puedes usar Amazon RDS para configurar y gestionar
 
-**Código de
+ una base de datos relacional sin tener que preocuparte por las tareas administrativas.
 
- ejemplo para lanzar una instancia RDS usando AWS CLI:**
+**Código de ejemplo para lanzar una instancia RDS usando AWS CLI:**
 
 ```sh
 aws rds create-db-instance --db-instance-identifier mydatabase --db-instance-class db.t2.micro --engine mysql --master-username admin --master-user-password password --allocated-storage 20
