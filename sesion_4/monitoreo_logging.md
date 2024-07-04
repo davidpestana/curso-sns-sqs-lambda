@@ -127,3 +127,107 @@ Las alarmas de CloudWatch se pueden configurar para tomar acciones específicas 
 ### Resumen
 
 En esta sección, aprendimos sobre el monitoreo y logging en AWS Lambda utilizando Amazon CloudWatch. Exploramos las métricas disponibles, cómo configurar logging en las funciones Lambda y cómo crear alarmas y métricas personalizadas en CloudWatch. Estas prácticas son esenciales para mantener la salud y el rendimiento de las aplicaciones serverless, permitiendo una respuesta rápida a problemas y optimización continua.
+
+
+
+
+#### Configuración de CloudWatch Logs
+
+**Amazon CloudWatch Logs** permite monitorear, almacenar y acceder a los registros de log de funciones Lambda. Esto es esencial para la depuración, monitoreo y análisis del rendimiento.
+
+1. **Configuración Básica:**
+   - Por defecto, las funciones Lambda están configuradas para enviar registros a CloudWatch Logs. Cada vez que una función Lambda se ejecuta, los registros se envían automáticamente a un grupo de log específico.
+
+2. **Visualización de Logs:**
+   - Se puede acceder a los logs desde la consola de CloudWatch Logs.
+   ```bash
+   aws logs get-log-events --log-group-name /aws/lambda/mi-funcion --log-stream-name fecha/log-stream
+   ```
+
+#### Métricas Personalizadas
+
+**Amazon CloudWatch Metrics** permite monitorear métricas personalizadas definidas por el usuario, además de las métricas estándar proporcionadas por AWS Lambda.
+
+1. **Métricas Estándar:**
+   - **Invocations:** Número de invocaciones de la función.
+   - **Duration:** Tiempo de ejecución de la función.
+   - **Errors:** Número de errores ocurridos.
+   - **Throttles:** Número de invocaciones limitadas.
+
+2. **Creación de Métricas Personalizadas:**
+   - Las funciones Lambda pueden enviar métricas personalizadas a CloudWatch utilizando la API de CloudWatch.
+   ```python
+   import boto3
+
+   cloudwatch = boto3.client('cloudwatch')
+
+   cloudwatch.put_metric_data(
+       Namespace='MiAplicacion',
+       MetricData=[
+           {
+               'MetricName': 'TiempoDeEjecucion',
+               'Dimensions': [
+                   {
+                       'Name': 'Funcion',
+                       'Value': 'MiFuncion'
+                   },
+               ],
+               'Value': 123.45,
+               'Unit': 'Milliseconds'
+           },
+       ]
+   )
+   ```
+
+#### Alarmas
+
+**Amazon CloudWatch Alarms** permite crear alarmas basadas en métricas para recibir notificaciones cuando se cumplen ciertas condiciones.
+
+1. **Creación de Alarmas:**
+   - Configurar alarmas para métricas como errores, duración de la ejecución, o invocaciones.
+   ```bash
+   aws cloudwatch put-metric-alarm --alarm-name ErroresLambda \
+   --metric-name Errors --namespace AWS/Lambda --statistic Sum \
+   --period 300 --threshold 1 --comparison-operator GreaterThanOrEqualToThreshold \
+   --dimensions Name=FunctionName,Value=MiFuncion --evaluation-periods 1 --alarm-actions arn:aws:sns:us-west-2:123456789012:MiAlarmaSNS
+   ```
+
+2. **Notificaciones:**
+   - Las alarmas pueden enviar notificaciones a través de Amazon SNS (Simple Notification Service), correo electrónico, o SMS cuando se activan.
+   - Integración con servicios de terceros para gestión de incidentes y alertas.
+
+#### Recomendaciones y Buenas Prácticas
+
+1. **Monitoreo Continuo:**
+   - Configurar métricas y alarmas para monitorear continuamente la salud y el rendimiento de las funciones Lambda.
+
+2. **Uso de Dashboards:**
+   - Utilizar CloudWatch Dashboards para visualizar métricas y logs en un solo lugar.
+   ```bash
+   aws cloudwatch put-dashboard --dashboard-name MiDashboard --dashboard-body file://dashboard.json
+   ```
+
+3. **Optimización de Logs:**
+   - Implementar una estrategia de retención de logs para gestionar el almacenamiento y los costos.
+   ```bash
+   aws logs put-retention-policy --log-group-name /aws/lambda/mi-funcion --retention-in-days 30
+   ```
+
+4. **Automatización de Monitoreo:**
+   - Automatizar el monitoreo y las alertas mediante el uso de scripts y herramientas de administración de la configuración.
+
+### Implementación Paso a Paso
+
+1. **Configuración Inicial:**
+   - Asegurarse de que las funciones Lambda están enviando logs a CloudWatch.
+   
+2. **Definir Métricas Personalizadas:**
+   - Integrar la lógica para enviar métricas personalizadas desde las funciones Lambda a CloudWatch.
+
+3. **Configurar Alarmas:**
+   - Crear alarmas para métricas críticas y configurar notificaciones para recibir alertas.
+
+4. **Crear Dashboards:**
+   - Configurar dashboards en CloudWatch para tener una vista consolidada del estado y rendimiento de las funciones Lambda.
+
+Amazon CloudWatch proporciona una solución completa para la monitorización y logging de funciones Lambda, permitiendo a los desarrolladores asegurar el rendimiento, la disponibilidad y la correcta operación de sus aplicaciones serverless en AWS.
