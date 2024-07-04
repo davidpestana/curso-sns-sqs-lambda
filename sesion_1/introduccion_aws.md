@@ -8,7 +8,7 @@
 
 Amazon Web Services (AWS) es la plataforma de servicios en la nube más completa y adoptada en el mundo. Ofrece más de 200 servicios integrales de centros de datos a nivel mundial. AWS se lanzó en 2006, y desde entonces, ha transformado la manera en que las empresas operan, ofreciendo soluciones escalables y de bajo costo. La idea de AWS surgió cuando Amazon decidió aprovechar su infraestructura interna y su experiencia en la gestión de centros de datos para ofrecer servicios tecnológicos a otras empresas.
 
-![AWS Logo](https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png)
+![AWS Logo](https://d1.awsstatic.com/logos/aws-logo.png)
 
 - **2002:** Amazon lanza su primer servicio web, Amazon Web Services, que permitía a los desarrolladores integrar características de Amazon en sus propios sitios web.
 - **2006:** Se lanzan los servicios fundacionales de AWS: Amazon S3 (Simple Storage Service) y Amazon EC2 (Elastic Compute Cloud).
@@ -98,10 +98,10 @@ Amazon S3 está diseñado para ofrecer una durabilidad del 99.999999999% y una a
 
 - **S3 Standard:** Para datos que se acceden con frecuencia.
 - **S3 Intelligent-Tiering:** Mueve automáticamente los datos entre dos niveles de acceso (frecuente e infrecuente) según los patrones de acceso.
-- **S3 Standard-IA (Infrequent Access):** Para datos a los que se accede menos frecuentemente, pero
+- **S3 Standard-IA (Infrequent Access):** Para datos a los que se accede menos frecuentemente, pero que aún necesitan estar rápidamente disponibles.
+- **S3
 
- que aún necesitan estar rápidamente disponibles.
-- **S3 One Zone-IA:** Para datos infrecuentes que no necesitan la resiliencia de datos multizona.
+ One Zone-IA:** Para datos infrecuentes que no necesitan la resiliencia de datos multizona.
 - **S3 Glacier:** Almacenamiento de bajo costo para archivado de datos y copias de seguridad a largo plazo.
 - **S3 Glacier Deep Archive:** La clase de almacenamiento más económica para archivado de datos que raramente se acceden y necesitan retención a largo plazo.
 
@@ -142,6 +142,66 @@ Amazon VPC permite crear una red virtual aislada en la nube de AWS. Las caracter
 - **Endpoints de VPC:** Permiten una conexión privada y segura entre la VPC y los servicios de AWS sin usar una puerta de enlace de Internet.
 - **Grupos de seguridad y ACLs (Access Control Lists):** Proporcionan control detallado sobre el tráfico entrante y saliente a nivel de instancia y subred.
 
+##### Subredes en Amazon VPC
+
+Una **subred** es una gama de direcciones IP en tu VPC. Puedes lanzar recursos de AWS, como instancias EC2, en una subred específica. Las subredes pueden ser públicas o privadas:
+
+- **Subred pública:** Tiene una ruta a una puerta de enlace de Internet, lo que permite que los recursos dentro de la subred se comuniquen directamente con Internet.
+- **Subred privada:** No tiene una ruta a una puerta de enlace de Internet, por lo que los recursos en esta subred no pueden comunicarse directamente con Internet.
+
+![Subnets](https://d1.awsstatic.com/vpc/subnets-diagram.png)
+
+##### CIDR (Classless Inter-Domain Routing)
+
+El bloque CIDR especifica un rango de direcciones IP para tu VPC. Por ejemplo, un bloque CIDR de `10.0.0.0/16` proporciona un rango de direcciones IP desde `10.0.0.0` hasta `10.0.255.255`. Esto se usa para definir las subredes dentro de la VPC.
+
+- **Ejemplo de bloques CIDR para subredes:**
+  - Subred pública: `10.0.1.0/24` (256 direcciones IP)
+  - Subred privada: `10.0.2.0/24` (256 direcciones IP)
+
+##### Puertas de enlace (Gateways)
+
+**Puerta de enlace de Internet**
+
+Una **puerta de enlace de Internet** permite que las instancias en tu VPC se comuniquen con Internet. Debes adjuntar una puerta de enlace de Internet a tu VPC y agregar una ruta en la tabla de rutas que apunte a la puerta de enlace de Internet.
+
+![Internet Gateway](https://d1.awsstatic.com/vpc/internet-gateway-diagram.png)
+
+**Puerta de enlace NAT**
+
+Una **puerta de enlace NAT** permite que las instancias en una subred privada accedan a Internet mientras mantienen sus direcciones IP privadas. Esto es útil para actualizaciones de software y otros accesos a Internet necesarios para instancias en subredes privadas.
+
+![NAT Gateway](https://d1.awsstatic.com/vpc/nat-gateway-diagram.png)
+
+##### Tablas de rutas
+
+Las **tablas de rutas** controlan el tráfico de red en tu VPC. Definen cómo se enruta el tráfico entre las subredes y hacia el exterior de la VPC (Internet).
+
+- **Ejemplo de una tabla de rutas:**
+  - Rango CIDR `10.0.0.0/16` para la VPC
+  - Ruta predeterminada `0.0.0.0/0` apuntando a la puerta de enlace de Internet `igw-0abcdef1234567890` para subredes públicas
+  - Ruta predeterminada `0.0.0.0/0` apuntando a la puerta de enlace NAT `nat-0abcdef1234567890` para subredes privadas
+
+![Route Table](https://d1.awsstatic.com/vpc/route-table-diagram.png)
+
+##### Grupos de seguridad y ACLs
+
+Los **grupos de seguridad** actúan como un firewall virtual para controlar el tráfico entrante y saliente de las instancias EC2. Puedes asignar uno o más grupos de seguridad a una instancia de EC2.
+
+- **Ejemplo de reglas de grupo de seguridad:**
+  - Permitir tráfico HTTP entrante (puerto 80) desde cualquier dirección IP (`0.0.0.0/0`)
+  - Permitir tráfico SSH entrante (puerto 22) desde una dirección IP específica (`203.0.113.0/24`)
+
+![Security Group](https://d1.awsstatic.com/vpc/security-group-diagram.png)
+
+Las **listas de control de acceso (ACLs)** son un conjunto de reglas que se aplican a las subredes en una VPC. Las ACLs controlan el tráfico entrante y saliente en el nivel de subred.
+
+- **Ejemplo de reglas de ACL:**
+  - Permitir todo el tráfico entrante desde la subred `10.0.1.0/24`
+  - Denegar todo el tráfico entrante desde `0.0.0.0/0` (tráfico de Internet)
+
+![ACL](https://d1.awsstatic.com/vpc/acl-diagram.png)
+
 #### Ejemplo práctico: Implementación de una aplicación web simple usando AWS
 
 Para ilustrar cómo una empresa puede utilizar varios servicios de AWS para implementar y gestionar una aplicación web simple, asegurando escalabilidad, seguridad y disponibilidad, seguimos los siguientes pasos:
@@ -166,7 +226,9 @@ Para ilustrar cómo una empresa puede utilizar varios servicios de AWS para impl
    aws rds create-db-instance --db-instance-identifier mi-base-datos --allocated-storage 20 --db-instance-class db.t2.micro --engine mysql --master-username admin --master-user-password password --backup-retention-period 3 --availability-zone us-west-2a
    ```
 
-   ![RDS Database](https://d1.awsstatic.com/product-marketing/RDS/RDS-Logo.0d5b3d3d1e8e1c2b38f503bc24d6b001.png)
+   ![RDS Database](https://d1
+
+.awsstatic.com/product-marketing/RDS/RDS-Logo.0d5b3d3d1e8e1c2b38f503bc24d6b001.png)
 
 4. **Configuración de roles y permisos con IAM:**
    ```bash
