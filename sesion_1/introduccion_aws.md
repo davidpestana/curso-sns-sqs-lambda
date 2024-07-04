@@ -397,7 +397,7 @@ AWS garantiza una alta disponibilidad mediante el uso de múltiples centros de d
   - **Compute Savings Plans:** Flexibilidad para cambiar entre instancias, regiones, y servicios (EC2, Fargate, Lambda).
   - **EC2 Instance Savings Plans:** Menos flexibilidad, pero mayor descuento.
 
-#### Riesgos de sobrecoste indeseado
+#### [Riesgos de sobrecoste](cost_management.md) 
 
 **Riesgos Comunes:**
 1. **Subutilización de Recursos:** Pagar por capacidad que no se utiliza completamente, como instancias sobredimensionadas.
