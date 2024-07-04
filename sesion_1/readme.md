@@ -9,6 +9,7 @@ Aquí tienes una versión mejorada del índice para la Sesión 1:
   - Historia y evolución
   - Principales servicios y su propósito
   - Características avanzadas más recientes
+  - Tecnología Nitro
 - **Servicios principales de AWS**
   - EC2, S3, RDS, IAM, VPC
   - **Detalles avanzados**
@@ -17,7 +18,6 @@ Aquí tienes una versión mejorada del índice para la Sesión 1:
     - Configuraciones Multi-AZ y Read Replicas en RDS
 - **Configuraciones y Recomendaciones**
   - Disponibilidad y zonas de disponibilidad
-  - Tecnología Nitro
   - Mecanismos de reservación y optimización de costos
   - Riesgos de sobrecoste indeseado
 
