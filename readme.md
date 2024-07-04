@@ -78,6 +78,23 @@
   - Enviar mensajes a la cola
   - Leer mensajes de la cola utilizando una aplicación Java
 
+#### 2.6. [Introducción a AWS Step Functions](sesion_2/introduccion_step_functions.md)
+- **Conceptos básicos de Step Functions**
+  - Definición y uso
+  - Casos de uso y beneficios
+- **Componentes de Step Functions**
+  - Estados y transiciones
+  - Tipos de estados
+
+#### 2.7. [Laboratorio: Creación de Flujos de Trabajo con Step Functions](sesion_2/laboratorio_step_functions.md)
+- **Descripción del laboratorio:**
+  - Crear un flujo de trabajo utilizando Step Functions que coordine varias funciones Lambda.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Diseñar e implementar un flujo de trabajo con Step Functions
+  - Probar el flujo de trabajo y registrar los resultados
+
 ---
 
 ### Sesión 3: [Integración de Lambda con SQS y SNS](sesion_3)
@@ -122,6 +139,24 @@
   - Crear un tópico SNS y una cola SQS
   - Configurar el tópico SNS para enviar mensajes a la cola SQS
   - Configurar Lambda para procesar mensajes de la cola SQS
+
+#### 3.7. [Automatización de Implementaciones con AWS SAM](sesion_3/introduccion_sam.md)
+- **Conceptos básicos de SAM**
+  - Definición y uso
+  - Ventajas de usar SAM para definir aplicaciones serverless
+- **Plantillas de SAM**
+  - Estructura y componentes de una plantilla SAM
+  - Ejemplos de plantillas
+
+#### 3.8. [Laboratorio: Implementación de Aplicaciones Serverless con SAM](sesion_3/laboratorio_sam.md)
+- **Descripción del laboratorio:**
+  - Definir e implementar una aplicación serverless utilizando SAM.
+- **Recursos necesarios:**
+  - AWS CLI, AWS SAM CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Crear una plantilla SAM para una función Lambda
+  - Desplegar la aplicación utilizando SAM
+  - Probar la implementación y realizar ajustes
 
 ---
 
@@ -183,3 +218,28 @@
   - Configurar el escalado automático para una función Lambda
   - Ajustar parámetros de rendimiento
   - Probar la solución bajo diferentes cargas
+ 
+#### 4.9. [Integración Avanzada con Step Functions y SAM](sesion_4/integracion_avanzada.md)
+- **Coordinar flujos de trabajo complejos con Step Functions**
+  - Ejemplos avanzados y casos de uso
+- **Mejorar la automatización y despliegue continuo con SAM**
+  - Estrategias para CI/CD en aplicaciones serverless
+
+#### 4.10. [Laboratorio: Integración Completa con Step Functions y SAM](sesion_4/laboratorio_integracion_completa.md)
+- **Descripción del laboratorio:**
+  - Crear una solución que integre Step Functions y SAM para coordinar y desplegar funciones Lambda.
+- **Recursos necesarios:**
+  - AWS CLI, AWS SAM CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Implementar una solución serverless utilizando Step Functions para coordinar varias funciones Lambda
+  - Desplegar la solución utilizando SAM
+  - Probar y ajustar la solución para optimizar el rendimiento y la escalabilidad
+
+
+
+
+
+
+
+
+
