@@ -1,4 +1,5 @@
 ### Sesión 4: Arquitectura de Eventos y Profundizando en AWS Lambda, SNS y SQS
+[Patrones](patrones.md)
 
 #### 4.1. [Arquitectura de Eventos](arquitectura_eventos.md)
 - **Conceptos de arquitectura orientada a eventos**
