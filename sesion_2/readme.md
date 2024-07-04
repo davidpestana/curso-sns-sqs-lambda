@@ -35,3 +35,20 @@
   - Crear una cola SQS
   - Enviar mensajes a la cola
   - Leer mensajes de la cola utilizando una aplicación Java
+
+#### 2.6. [Introducción a AWS Step Functions](introduccion_step_functions.md)
+- **Conceptos básicos de Step Functions**
+  - Definición y uso
+  - Casos de uso y beneficios
+- **Componentes de Step Functions**
+  - Estados y transiciones
+  - Tipos de estados
+
+#### 2.7. [Laboratorio: Creación de Flujos de Trabajo con Step Functions](laboratorio_step_functions.md)
+- **Descripción del laboratorio:**
+  - Crear un flujo de trabajo utilizando Step Functions que coordine varias funciones Lambda.
+- **Recursos necesarios:**
+  - AWS CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Diseñar e implementar un flujo de trabajo con Step Functions
+  - Probar el flujo de trabajo y registrar los resultados
