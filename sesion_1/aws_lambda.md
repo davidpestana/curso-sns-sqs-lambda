@@ -1,5 +1,232 @@
 ### 1.2. AWS Lambda
 
+## ¿Es Lambda un Contenedor?
+
+### Introducción
+
+La computación moderna ha visto una evolución significativa en cómo se implementan y gestionan las aplicaciones. Dos tecnologías clave en este ámbito son la virtualización y los contenedores. Ambas ofrecen formas de aislar y gestionar aplicaciones, pero lo hacen de maneras fundamentalmente diferentes. AWS Lambda, aunque no es un servicio de contenedores en sí, utiliza contenedores de manera subyacente para proporcionar entornos de ejecución aislados y eficientes.
+
+### ¿Qué son los Contenedores?
+
+Los contenedores son una tecnología de virtualización a nivel de sistema operativo que permite empaquetar y ejecutar aplicaciones y sus dependencias en un entorno aislado. A diferencia de la virtualización tradicional, los contenedores comparten el núcleo del sistema operativo con el host, lo que los hace más ligeros y eficientes.
+
+**Características de los Contenedores:**
+
+1. **Ligereza:** Los contenedores no requieren un sistema operativo completo, lo que los hace significativamente más ligeros que las máquinas virtuales (VMs). Esto se debe a que comparten el núcleo del sistema operativo con el host.
+   
+2. **Aislamiento:** Proporcionan un entorno aislado para aplicaciones, asegurando que cada contenedor tenga su propio sistema de archivos, variables de entorno y configuraciones.
+
+3. **Portabilidad:** Los contenedores se pueden ejecutar en cualquier sistema que soporte la tecnología de contenedores (como Docker), haciendo que las aplicaciones sean portátiles entre diferentes entornos de desarrollo y producción.
+
+4. **Escalabilidad:** Facilitan la creación y destrucción rápida de entornos, lo que es ideal para aplicaciones que necesitan escalar dinámicamente.
+
+**Ejemplo de un Dockerfile:**
+
+```Dockerfile
+# Utiliza una imagen base de Python
+FROM python:3.8-slim-buster
+
+# Establece el directorio de trabajo
+WORKDIR /app
+
+# Copia el archivo de requerimientos y los instala
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+# Copia el código de la aplicación
+COPY . .
+
+# Comando para ejecutar la aplicación
+CMD ["python", "app.py"]
+```
+
+### Virtualización vs. Contenedores
+
+**Virtualización:**
+
+La virtualización tradicional permite ejecutar múltiples sistemas operativos completos en una sola máquina física mediante la creación de VMs. Cada VM tiene su propio kernel y sistema operativo, lo que proporciona un fuerte aislamiento pero con un mayor consumo de recursos.
+
+**Características de la Virtualización:**
+
+1. **Aislamiento Completo:** Cada VM tiene su propio sistema operativo, lo que proporciona un fuerte aislamiento entre VMs.
+   
+2. **Compatibilidad:** Las VMs pueden ejecutar diferentes sistemas operativos y versiones, proporcionando flexibilidad en términos de compatibilidad con aplicaciones y sistemas legados.
+
+3. **Overhead:** Las VMs tienen un mayor overhead debido a la necesidad de virtualizar hardware y ejecutar sistemas operativos completos.
+
+**Ejemplo de Virtualización:**
+
+```plaintext
++-----------------+  +-----------------+  +-----------------+
+|    VM 1         |  |    VM 2         |  |    VM 3         |
+| OS + App        |  | OS + App        |  | OS + App        |
++-----------------+  +-----------------+  +-----------------+
+| Hypervisor      |  | Hypervisor      |  | Hypervisor      |
++-----------------+  +-----------------+  +-----------------+
+| Hardware        |  | Hardware        |  | Hardware        |
++-----------------+  +-----------------+  +-----------------+
+```
+
+**Diferencias Clave entre Contenedores y Virtualización:**
+
+1. **Uso de Recursos:**
+   - **Contenedores:** Comparten el kernel del sistema operativo con el host, lo que reduce significativamente el overhead y el uso de recursos.
+   - **Virtualización:** Cada VM tiene su propio kernel, lo que aumenta el consumo de recursos.
+
+2. **Aislamiento:**
+   - **Contenedores:** Proporcionan un aislamiento a nivel de aplicación, compartiendo el kernel del sistema operativo.
+   - **Virtualización:** Proporciona un aislamiento completo a nivel de sistema operativo, con cada VM ejecutando su propio kernel.
+
+3. **Arranque:**
+   - **Contenedores:** Arrancan mucho más rápido que las VMs porque no necesitan inicializar un sistema operativo completo.
+   - **Virtualización:** Las VMs tardan más en arrancar debido a la necesidad de iniciar un sistema operativo completo.
+
+4. **Portabilidad:**
+   - **Contenedores:** Altamente portátiles entre diferentes entornos que soporten la tecnología de contenedores.
+   - **Virtualización:** Menos portátiles debido a la dependencia del hipervisor específico y configuraciones del sistema.
+
+### ¿Cómo utiliza contenedores AWS Lambda?
+
+AWS Lambda no es un contenedor en el sentido tradicional, pero usa contenedores para ejecutar sus funciones de manera eficiente. Vamos a profundizar en cómo funciona AWS Lambda y cómo utiliza contenedores en su arquitectura.
+
+**Aislamiento del Entorno:**
+- Cada función Lambda se ejecuta en un contenedor aislado, lo que garantiza que no haya interferencia entre diferentes funciones o invocaciones. Esto proporciona seguridad y consistencia en la ejecución.
+
+**Escalabilidad:**
+- Lambda escala automáticamente al lanzar múltiples contenedores para manejar el tráfico entrante. Si hay muchas solicitudes, Lambda puede lanzar muchos contenedores en paralelo para manejar la carga.
+
+**Inicio Rápido:**
+- Los contenedores de Lambda están diseñados para iniciar rápidamente, minimizando el tiempo de arranque en frío (cold start). AWS optimiza estos contenedores para reducir la latencia en el arranque.
+
+### Arquitectura de AWS Lambda
+
+1. **Desencadenadores (Triggers):**
+   - Eventos de servicios como S3, DynamoDB, API Gateway, SQS, SNS, entre otros, pueden actuar como desencadenadores para funciones Lambda.
+
+2. **Envío del Código:**
+   - Los desarrolladores suben su código a Lambda, donde se almacena y se prepara para la ejecución.
+
+3. **Entorno de Ejecución:**
+   - Lambda usa un entorno de ejecución basado en contenedores para ejecutar el código. Estos entornos incluyen los recursos necesarios, como CPU, memoria y almacenamiento temporal.
+
+4. **Retorno de Resultados:**
+   - Una vez ejecutado el código, Lambda devuelve los resultados al origen del evento o realiza acciones específicas, como escribir en una base de datos o enviar una notificación.
+
+### Beneficios de Usar AWS Lambda
+
+1. **Sin Gestión de Servidores:**
+   - No necesitas preocuparte por la infraestructura subyacente. AWS Lambda se encarga de todo el aprovisionamiento, escalado, monitoreo y registro de tu código.
+
+2. **Escalabilidad Automática:**
+   - Lambda ajusta automáticamente la escala en función del tráfico entrante, lanzando más contenedores según sea necesario.
+
+3. **Pago por Uso:**
+   - Solo pagas por el tiempo de computación consumido y la cantidad de ejecuciones. Esto puede ser más económico en comparación con mantener servidores dedicados.
+
+4. **Integración con Otros Servicios de AWS:**
+   - Lambda se integra fácilmente con otros servicios de AWS, lo que facilita la creación de aplicaciones complejas y escalables.
+
+### Ejemplo de una Función Lambda en Java
+
+Vamos a repasar brevemente el ejemplo práctico de crear una función Lambda que procese un archivo CSV desde S3 y almacene los datos en DynamoDB.
+
+1. **Código de la Función:**
+
+```java
+package com.example;
+
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.amazonaws.services.lambda.runtime.events.S3Event;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
+import com.amazonaws.services.dynamodbv2.document.DynamoDB;
+import com.amazonaws.services.dynamodbv2.document.Table;
+import com.amazonaws.services.dynamodbv2.document.Item;
+import com.amazonaws.services.lambda.runtime.events.S3EventNotification;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ProcessCSVFunction implements RequestHandler<S3Event, String> {
+
+    private final AmazonS3 s3 = AmazonS3ClientBuilder.defaultClient();
+    private final AmazonDynamoDB dynamoDBClient = AmazonDynamoDBClientBuilder.defaultClient();
+    private final DynamoDB dynamoDB = new DynamoDB(dynamoDBClient);
+    private final String tableName = "ProcessedData";
+
+    @Override
+    public String handleRequest(S3Event event, Context context) {
+        try {
+            S3EventNotification.S3EventNotificationRecord record = event.getRecords().get(0);
+            String bucketName = record.getS3().getBucket().getName();
+            String objectKey = record.getS3().getObject().getKey();
+
+            // Descargar el archivo CSV desde S3
+            InputStream s3Object = s3.getObject(bucketName, objectKey).getObjectContent();
+            File file = new File("/tmp/" + objectKey);
+            com.amazonaws.util.IOUtils.copy(s3Object, new java.io.FileOutputStream(file));
+
+            // Procesar el archivo CSV
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] values = line.split(",");
+                    Map<String, String> item = new HashMap<>();
+                   
+
+ item.put("RecordId", values[0]);
+                    item.put("Name", values[1]);
+                    item.put("Email", values[2]);
+                    item.put("ProcessedTimestamp", context.getAwsRequestId());
+
+                    // Guardar los datos en DynamoDB
+                    Table table = dynamoDB.getTable(tableName);
+                    table.putItem(new Item().withPrimaryKey("RecordId", values[0])
+                            .withString("Name", values[1])
+                            .withString("Email", values[2])
+                            .withString("ProcessedTimestamp", context.getAwsRequestId()));
+                }
+            }
+            return "File processed successfully!";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error processing file.";
+        }
+    }
+}
+```
+
+2. **Despliegue y Configuración:**
+
+   - **Desplegar el Código en Lambda:**
+     - Sube el código (archivo JAR) a AWS Lambda.
+     - Configura el handler y asigna los permisos necesarios.
+
+   - **Configurar el Desencadenador de S3:**
+     - Configura para que la función se ejecute automáticamente cuando se cargue un archivo CSV en el bucket de S3.
+
+3. **Prueba de la Función:**
+
+   - **Sube un Archivo CSV a S3:**
+     - Sube un archivo CSV al bucket configurado.
+   
+   - **Verifica la Ejecución:**
+     - Revisa los logs en CloudWatch y verifica que los datos se hayan almacenado correctamente en DynamoDB.
+
+### Conclusión
+
+AWS Lambda no es un contenedor en el sentido tradicional, pero utiliza contenedores para proporcionar entornos de ejecución aislados, escalables y eficientes. Esto permite a los desarrolladores centrarse en el código y la lógica de negocio sin preocuparse por la infraestructura subyacente.
+
+### AWS Lambda
+
+
 AWS Lambda es un servicio de computación sin servidor que ejecuta tu código en respuesta a eventos y gestiona automáticamente los recursos de cómputo necesarios para esa ejecución. Lambda te permite ejecutar código sin aprovisionar ni gestionar servidores, escalando automáticamente desde unas pocas solicitudes por día hasta miles por segundo.
 
 #### Conceptos básicos
