@@ -246,16 +246,51 @@ Una empresa necesita una solución de backup y recuperación ante desastres para
 
 **Amazon EC2:**
 
-- **Familias de instancias:**
-  - **t2, t3 (Burstable Performance):** Adecuadas para cargas de trabajo que tienen picos ocasionales de uso.
-  - **m5, m6 (General Purpose):** Equilibrio entre cómputo, memoria y redes.
-  - **c5, c6 (Compute Optimized):** Para cargas de trabajo intensivas en cómputo
+### Familias de instancias EC2
 
-, como servidores web de alto rendimiento.
-  - **r5, r6 (Memory Optimized):** Para aplicaciones que requieren grandes cantidades de memoria, como bases de datos en memoria.
-  - **i3, i4 (Storage Optimized):** Para aplicaciones que necesitan un acceso rápido y masivo a almacenamiento local.
-  - **g4, p3 (Accelerated Computing):** Para cargas de trabajo que requieren procesamiento gráfico intensivo, como aprendizaje automático y procesamiento de video.
+Amazon EC2 ofrece una variedad de instancias optimizadas para diferentes casos de uso. Estas instancias se agrupan en varias familias, cada una diseñada para satisfacer necesidades específicas de aplicaciones y cargas de trabajo.
 
+#### Instancias de Propósito General
+
+Las instancias de propósito general proporcionan un equilibrio de recursos de computación, memoria y redes, lo que las hace adecuadas para una amplia variedad de aplicaciones.
+
+- **t3, t4g:** Estas instancias son adecuadas para cargas de trabajo con ráfagas temporales de uso de CPU. Ofrecen un rendimiento básico con la capacidad de aumentar en función de la demanda.
+- **m5, m6g:** Ideales para aplicaciones que requieren un equilibrio de recursos de computación, memoria y redes. Son adecuadas para servidores web y de aplicaciones, pequeñas y medianas bases de datos, y clústeres de caché.
+
+#### Instancias Optimizadas para Cómputo
+
+Estas instancias son adecuadas para aplicaciones que requieren un alto rendimiento de procesamiento.
+
+- **c5, c6g:** Diseñadas para tareas que necesitan mucho procesamiento, como servidores de alta capacidad, renderización de videojuegos, y análisis científicos. Ofrecen un alto rendimiento de CPU por dólar.
+
+#### Instancias Optimizadas para Memoria
+
+Las instancias optimizadas para memoria son ideales para aplicaciones que requieren grandes cantidades de memoria.
+
+- **r5, r6g:** Adecuadas para bases de datos de gran tamaño, procesamiento de big data, y análisis en tiempo real.
+- **x1e, x2g:** Proporcionan cantidades extremadamente grandes de memoria, lo que las hace perfectas para aplicaciones en memoria como SAP HANA, bases de datos de alta memoria y análisis en tiempo real.
+
+#### Instancias Optimizadas para Almacenamiento
+
+Estas instancias están diseñadas para aplicaciones que requieren un acceso rápido y masivo a almacenamiento local.
+
+- **i3, i4g:** Indicadas para bases de datos NoSQL, sistemas de archivos distribuidos y aplicaciones de big data que requieren un alto rendimiento de IOPS (operaciones de entrada/salida por segundo).
+- **d2, d3:** Ofrecen almacenamiento HDD de alta densidad, lo que las hace adecuadas para aplicaciones como almacenamiento de datos a largo plazo, almacenamiento de datos a escala de petabytes, y clústeres de big data.
+
+#### Instancias Aceleradas por GPU
+
+Estas instancias están diseñadas para cargas de trabajo que requieren una gran capacidad de procesamiento gráfico.
+
+- **p3, p4:** Ideales para aprendizaje profundo, simulaciones científicas, y procesamiento de gráficos de alto rendimiento.
+- **g4dn:** Adecuadas para aplicaciones de gráficos, juegos en la nube, y aprendizaje automático.
+
+#### Instancias de Alto Rendimiento en Red
+
+Estas instancias son adecuadas para aplicaciones que requieren un alto rendimiento de red.
+
+- **hpc6a:** Diseñadas para cargas de trabajo HPC (High Performance Computing), que necesitan una baja latencia de red y una alta capacidad de transferencia de datos.
+
+Cada familia de instancias EC2 ofrece opciones específicas adaptadas a diversos escenarios y requisitos de rendimiento, lo que permite a las empresas elegir la configuración más adecuada para sus necesidades y optimizar tanto el rendimiento como los costos operativos.
 **Amazon S3:**
 
 - **Características de seguridad:**
