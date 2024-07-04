@@ -114,6 +114,8 @@ AWS Lambda no es un contenedor en el sentido tradicional, pero usa contenedores 
 4. **Retorno de Resultados:**
    - Una vez ejecutado el código, Lambda devuelve los resultados al origen del evento o realiza acciones específicas, como escribir en una base de datos o enviar una notificación.
 
+![Integracion de soluciones](https://d1.awsstatic.com/ac-serverless-wa-apps-intro.9623178d724f8a8f24febe415329757aeb85aa6c.png)
+
 ### Beneficios de Usar AWS Lambda
 
 1. **Sin Gestión de Servidores:**
