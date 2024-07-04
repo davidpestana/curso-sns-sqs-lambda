@@ -712,3 +712,94 @@ Crear una función Lambda que procese datos de un archivo CSV almacenado en un b
 ### Conclusión
 
 Hemos creado una función AWS Lambda en Java que procesa archivos CSV subidos a un bucket de S3, transforma los datos y los almacena en una tabla de DynamoDB. Este ejemplo muestra cómo Lambda puede integrarse con otros servicios de AWS para automatizar flujos de trabajo de procesamiento de datos, lo cual es muy útil en un contexto empresarial donde se requiere manejar grandes volúmenes de datos de manera eficiente y escalable.
+
+
+
+### Lambda en Ubicaciones de AWS Edge
+
+#### ¿Qué es AWS Edge?
+
+**AWS Edge Locations** son ubicaciones físicas distribuidas globalmente donde AWS implementa infraestructura para entregar contenido y ejecutar código cerca de los usuarios finales. Estas ubicaciones son puntos de presencia (PoPs) utilizados principalmente por Amazon CloudFront, la red de entrega de contenido (CDN) de AWS.
+
+**Objetivo:**
+- **Reducción de latencia:** Al estar más cerca de los usuarios finales, las solicitudes de contenido pueden ser atendidas más rápidamente, mejorando la experiencia del usuario.
+
+#### Motivación para Implementar Lambda@Edge
+
+**AWS Lambda@Edge** permite ejecutar funciones Lambda en estas ubicaciones de borde, lo que permite a los desarrolladores personalizar la entrega de contenido y ejecutar lógica de aplicación más cerca del usuario final.
+
+**Ventajas:**
+1. **Reducción de Latencia:** Las solicitudes no necesitan viajar hasta una región principal de AWS.
+2. **Personalización Dinámica:** Personalizar el contenido entregado en función de la geolocalización, tipo de dispositivo, y otros metadatos.
+3. **Mejora en la Experiencia del Usuario:** Tiempos de respuesta más rápidos y rendimiento mejorado.
+4. **Escalabilidad Global:** Aprovechar la infraestructura global de AWS para escalar automáticamente en múltiples ubicaciones.
+
+#### Cómo Implementar Lambda@Edge
+
+**1. Crear una Función Lambda:**
+- Escribir una función Lambda para manipular las solicitudes o respuestas HTTP.
+  
+  ```javascript
+  exports.handler = async (event) => {
+      const request = event.Records[0].cf.request;
+      const headers = request.headers;
+      
+      // Personalizar respuesta basada en geolocalización
+      if (headers['cloudfront-viewer-country']) {
+          const country = headers['cloudfront-viewer-country'][0].value;
+          if (country === 'US') {
+              request.uri = '/us-index.html';
+          } else if (country === 'FR') {
+              request.uri = '/fr-index.html';
+          }
+      }
+      
+      return request;
+  };
+  ```
+
+**2. Configurar Lambda@Edge:**
+- Desplegar la función Lambda en las ubicaciones de Edge y asociarla con una distribución de CloudFront.
+  
+  ```bash
+  aws lambda create-function --function-name MyEdgeFunction \
+      --runtime nodejs14.x --role arn:aws:iam::123456789012:role/execution_role \
+      --handler index.handler --zip-file fileb://function.zip \
+      --region us-east-1
+      
+  aws lambda add-permission --function-name MyEdgeFunction \
+      --statement-id 1 --action lambda:InvokeFunction \
+      --principal edgelambda.amazonaws.com --source-arn arn:aws:cloudfront::123456789012:distribution/EXAMPLE
+  ```
+
+**3. Asociar con CloudFront:**
+- Asociar la función Lambda@Edge con eventos específicos en CloudFront, como "origin-request" o "viewer-response".
+
+#### Costos de AWS Lambda@Edge
+
+**Costos de Ejecución:**
+- **Número de Ejecuciones:** Se cobra por cada invocación de la función Lambda.
+- **Duración:** Se cobra por el tiempo de ejecución de la función, medido en milisegundos, desde el inicio hasta la finalización.
+
+**Costos de Solicitudes de CloudFront:**
+- **Solicitudes HTTP/HTTPS:** Se cobran por las solicitudes realizadas a la distribución de CloudFront.
+
+**Transferencia de Datos:**
+- **Transferencia de Datos desde CloudFront a Internet:** Se cobran los datos transferidos desde CloudFront a los usuarios finales en internet. Las tarifas varían según la región de la ubicación de borde.
+- **Transferencia de Datos entre Regiones:** Si los datos deben ser transferidos entre diferentes regiones de AWS, se aplican cargos adicionales por la transferencia de datos entre regiones.
+
+#### Recomendaciones y Buenas Prácticas
+
+1. **Optimización de Costos:**
+   - Utilizar Lambda@Edge solo para funciones que realmente se beneficien de la reducción de latencia y personalización en el borde.
+   
+2. **Seguridad:**
+   - Implementar controles de seguridad robustos para validar y sanitizar las entradas, ya que el código se ejecuta en ubicaciones de borde más expuestas.
+
+3. **Monitoreo y Logging:**
+   - Configurar AWS CloudWatch para monitorear y registrar las ejecuciones de Lambda@Edge, permitiendo una visibilidad completa de su desempeño y errores.
+
+4. **Pruebas Exhaustivas:**
+   - Realizar pruebas exhaustivas en entornos de prueba que emulen las condiciones de borde antes de desplegar en producción.
+
+AWS Lambda@Edge es una poderosa herramienta para mejorar la latencia y la personalización de aplicaciones y servicios globales, aprovechando la infraestructura de borde de AWS para llevar el procesamiento más cerca de los usuarios finales.
