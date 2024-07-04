@@ -1,4 +1,4 @@
-### Patrones de Arquitectura de Eventos en Java
+### Patrones de Arquitectura de Eventos
 
 #### 1. Publicador-Suscriptor (Pub/Sub)
 **Descripción:**
