@@ -291,6 +291,7 @@ Estas instancias son adecuadas para aplicaciones que requieren un alto rendimien
 - **hpc6a:** Diseñadas para cargas de trabajo HPC (High Performance Computing), que necesitan una baja latencia de red y una alta capacidad de transferencia de datos.
 
 Cada familia de instancias EC2 ofrece opciones específicas adaptadas a diversos escenarios y requisitos de rendimiento, lo que permite a las empresas elegir la configuración más adecuada para sus necesidades y optimizar tanto el rendimiento como los costos operativos.
+
 **Amazon S3:**
 
 - **Características de seguridad:**
@@ -298,6 +299,49 @@ Cada familia de instancias EC2 ofrece opciones específicas adaptadas a diversos
   - **Control de acceso:** Mediante políticas de bucket, listas de control de acceso (ACLs) y políticas de IAM.
   - **Versionado:** Permite mantener múltiples versiones de un objeto en el mismo bucket.
   - **MFA Delete:** Requiere autenticación multifactor para eliminar objetos, proporcionando una capa adicional de protección.
+ 
+### Clases de almacenamiento en S3
+
+Amazon S3 ofrece múltiples clases de almacenamiento, cada una diseñada para diferentes casos de uso en función de los requisitos de acceso y costos.
+
+#### S3 Standard
+- **Descripción:** Almacenamiento de objetos con alta durabilidad y disponibilidad.
+- **Uso:** Datos a los que se accede con frecuencia, como sitios web, aplicaciones móviles y contenido dinámico.
+- **Durabilidad:** 99.999999999%
+- **Disponibilidad:** 99.99%
+
+#### S3 Intelligent-Tiering
+- **Descripción:** Mueve automáticamente los datos entre dos niveles de acceso (frecuente e infrecuente) basado en patrones de acceso.
+- **Uso:** Datos con patrones de acceso impredecibles.
+- **Durabilidad:** 99.999999999%
+- **Disponibilidad:** 99.9%
+
+#### S3 Standard-IA (Infrequent Access)
+- **Descripción:** Para datos a los que se accede con menor frecuencia pero que necesitan estar rápidamente disponibles.
+- **Uso:** Copias de seguridad a largo plazo y datos de recuperación ante desastres.
+- **Durabilidad:** 99.999999999%
+- **Disponibilidad:** 99.9%
+
+#### S3 One Zone-IA
+- **Descripción:** Almacenamiento de menor costo para datos infrecuentes que no requieren redundancia multizona.
+- **Uso:** Datos fácilmente reproducibles, copias de seguridad secundarias.
+- **Durabilidad:** 99.999999999%
+- **Disponibilidad:** 99.5%
+
+#### S3 Glacier
+- **Descripción:** Almacenamiento de bajo costo para archivado de datos y copias de seguridad a largo plazo.
+- **Uso:** Datos a los que se accede raramente, como archivos de conformidad y archivado de registros.
+- **Durabilidad:** 99.999999999%
+- **Tiempo de recuperación:** Minutos a horas
+
+#### S3 Glacier Deep Archive
+- **Descripción:** La opción de almacenamiento más económica para datos raramente accedidos.
+- **Uso:** Archivado de datos a largo plazo que no requieren acceso frecuente.
+- **Durabilidad:** 99.999999999%
+- **Tiempo de recuperación:** Horas
+
+Cada una de estas clases ofrece una combinación única de durabilidad, disponibilidad y costos, lo que permite a las empresas optimizar su estrategia de almacenamiento en función de sus necesidades específicas y patrones de acceso a los datos.
+
 
 **Amazon VPC:**
 
@@ -316,3 +360,55 @@ Cada familia de instancias EC2 ofrece opciones específicas adaptadas a diversos
   - **Automated Backups:** RDS realiza automáticamente copias de seguridad completas diarias y copias de seguridad de transacciones, permitiendo restaurar la base de datos a cualquier punto en el tiempo dentro del período de retención especificado.
 
 Estos detalles adicionales proporcionan una comprensión profunda y exhaustiva de los servicios de AWS y sus características, adecuadas para un curso introductorio expandido sobre AWS.
+
+
+### Configuraciones y Recomendaciones
+
+#### Disponibilidad y zonas de disponibilidad
+
+**Disponibilidad:**
+AWS garantiza una alta disponibilidad mediante el uso de múltiples centros de datos, llamados Zonas de Disponibilidad (AZ). Cada región de AWS contiene varias AZ, que son ubicaciones físicamente separadas y redundantes dentro de una región.
+
+**Zonas de Disponibilidad (AZ):**
+- **Estructura:** Cada AZ está diseñada para ser independiente de las fallas en otras AZ. Esto incluye energía, refrigeración y redes.
+- **Conectividad:** Las AZ dentro de una región están conectadas a través de redes de alta velocidad y baja latencia, permitiendo la replicación de datos en tiempo real.
+- **Uso:** Implementar aplicaciones y bases de datos en múltiples AZ para lograr alta disponibilidad y tolerancia a fallos.
+
+#### Mecanismos de reservación y optimización de costos
+
+**On-Demand Instances:**
+- **Descripción:** Paga por segundo de uso sin compromisos a largo plazo.
+- **Uso:** Ideal para cargas de trabajo con patrones de uso impredecibles.
+
+**Reserved Instances (RI):**
+- **Descripción:** Compromiso a uno o tres años con descuentos significativos.
+- **Tipos de RI:**
+  - **Standard RI:** Mayor descuento, menor flexibilidad.
+  - **Convertible RI:** Permite cambiar atributos de la instancia, como el tipo o la familia.
+  - **Scheduled RI:** Reserva capacidad para tiempos específicos.
+
+**Spot Instances:**
+- **Descripción:** Capacidad de computación no utilizada a precios reducidos.
+- **Uso:** Ideal para cargas de trabajo flexibles y tolerantes a interrupciones, como procesamiento por lotes y análisis de big data.
+
+**Savings Plans:**
+- **Descripción:** Ofrecen precios bajos a cambio de un compromiso de uso específico por uno o tres años.
+- **Tipos:**
+  - **Compute Savings Plans:** Flexibilidad para cambiar entre instancias, regiones, y servicios (EC2, Fargate, Lambda).
+  - **EC2 Instance Savings Plans:** Menos flexibilidad, pero mayor descuento.
+
+#### Riesgos de sobrecoste indeseado
+
+**Riesgos Comunes:**
+1. **Subutilización de Recursos:** Pagar por capacidad que no se utiliza completamente, como instancias sobredimensionadas.
+2. **Falta de Monitoreo:** No monitorear y optimizar el uso puede llevar a costos inesperados.
+3. **Tráfico de Datos:** Transferencias de datos entre regiones o fuera de AWS pueden generar cargos significativos.
+4. **Almacenamiento Inactivo:** Datos almacenados en servicios como S3 que no se acceden pueden generar costos continuos.
+
+**Recomendaciones para Mitigación:**
+1. **Monitoreo y Alertas:** Utilizar herramientas como AWS Cost Explorer y establecer alertas de presupuesto.
+2. **Derecho de Tamaño:** Ajustar el tamaño de las instancias y recursos según la demanda.
+3. **Políticas de Ciclo de Vida:** Configurar políticas para mover o eliminar datos inactivos en S3.
+4. **Uso de Reservas y Planes de Ahorro:** Implementar Reserved Instances y Savings Plans para cargas de trabajo estables.
+
+Implementar estas configuraciones y recomendaciones ayudará a las empresas a optimizar el rendimiento y minimizar los costos, asegurando una infraestructura de TI eficiente y rentable en AWS.
