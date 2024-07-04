@@ -56,3 +56,19 @@
   - Configurar el escalado automático para una función Lambda
   - Ajustar parámetros de rendimiento
   - Probar la solución bajo diferentes cargas
+
+#### 4.9. [Integración Avanzada con Step Functions y SAM](integracion_avanzada.md)
+- **Coordinar flujos de trabajo complejos con Step Functions**
+  - Ejemplos avanzados y casos de uso
+- **Mejorar la automatización y despliegue continuo con SAM**
+  - Estrategias para CI/CD en aplicaciones serverless
+
+#### 4.10. [Laboratorio: Integración Completa con Step Functions y SAM](laboratorio_integracion_completa.md)
+- **Descripción del laboratorio:**
+  - Crear una solución que integre Step Functions y SAM para coordinar y desplegar funciones Lambda.
+- **Recursos necesarios:**
+  - AWS CLI, AWS SAM CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Implementar una solución serverless utilizando Step Functions para coordinar varias funciones Lambda
+  - Desplegar la solución utilizando SAM
+  - Probar y ajustar la solución para optimizar el rendimiento y la escalabilidad
