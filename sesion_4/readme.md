@@ -31,6 +31,7 @@
 
 #### 4.5. [Seguridad en AWS Lambda, SNS y SQS](seguridad.md)
 - **Gestión de permisos con IAM**
+- **Usuarios, Roles, Policies**
 - **Buenas prácticas de seguridad**
 
 #### 4.6. [Laboratorio: Seguridad y Permisos](laboratorio_seguridad.md)
