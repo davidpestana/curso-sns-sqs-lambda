@@ -100,6 +100,8 @@ AWS Lambda no es un contenedor en el sentido tradicional, pero usa contenedores 
 
 ### Arquitectura de AWS Lambda
 
+![Arquitectura AWS Lambda](https://docs.aws.amazon.com/es_es/whitepapers/latest/serverless-multi-tier-architectures-api-gateway-lambda/images/microservices-with-lambda.png)
+
 1. **Desencadenadores (Triggers):**
    - Eventos de servicios como S3, DynamoDB, API Gateway, SQS, SNS, entre otros, pueden actuar como desencadenadores para funciones Lambda.
 
