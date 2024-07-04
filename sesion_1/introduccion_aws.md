@@ -68,13 +68,45 @@ AWS ofrece una amplia gama de servicios, agrupados en varias categorías:
    - **Security Groups:** Actúan como firewalls virtuales para controlar el tráfico hacia y desde las instancias de EC2.
    - **Network ACLs (Access Control Lists):** Proveen una capa adicional de seguridad controlando el tráfico hacia y desde las subnets.
 
-**Tecnología Nitro**
+### Características avanzadas más recientes
 
-La plataforma Nitro es la tecnología subyacente que potencia las instancias EC2 más recientes. Proporciona varias mejoras clave:
+AWS ha continuado evolucionando y mejorando sus servicios con nuevas características y tecnologías avanzadas. A continuación se describen algunas de las más recientes e importantes.
 
-- **Desempeño mejorado:** La tecnología Nitro permite a las instancias EC2 utilizar casi toda la capacidad de la CPU y la memoria sin overhead de hipervisor.
-- **Seguridad avanzada:** Nitro incorpora capacidades de seguridad integradas, como cifrado de datos en reposo y en tránsito.
-- **Funcionalidad avanzada:** Nitro soporta características avanzadas como instancias de metal desnudo (bare metal), que permiten a las aplicaciones acceder directamente al hardware subyacente.
+#### Tecnología Nitro
+
+La plataforma Nitro es una arquitectura de nueva generación que potencia las instancias EC2 más recientes. Se compone de varios componentes que trabajan juntos para mejorar la seguridad, el rendimiento y la eficiencia de las instancias.
+
+1. **Desempeño Mejorado:** Nitro permite a las instancias EC2 utilizar casi toda la capacidad de la CPU y la memoria sin la sobrecarga típica de los hipervisores tradicionales. Esto se traduce en un rendimiento significativamente mejorado para las aplicaciones.
+   
+2. **Seguridad Avanzada:** Nitro incorpora capacidades de seguridad integradas, como el cifrado de datos en reposo y en tránsito. Además, la separación de los recursos físicos y virtuales mejora el aislamiento y la seguridad de los datos.
+
+3. **Funcionalidad Avanzada:** La tecnología Nitro soporta características avanzadas como instancias de metal desnudo (bare metal), que permiten a las aplicaciones acceder directamente al hardware subyacente. Esto es útil para aplicaciones que requieren acceso directo al hardware para optimizar el rendimiento.
+
+#### Amazon EC2 Mac Instances
+
+AWS ha introducido instancias EC2 Mac, que permiten a los desarrolladores ejecutar entornos de macOS en la nube de AWS. Esto es especialmente útil para los desarrolladores que crean aplicaciones para el ecosistema de Apple (macOS, iOS, iPadOS, tvOS y watchOS).
+
+#### AWS Graviton2 Processors
+
+Las instancias EC2 impulsadas por procesadores Graviton2 ofrecen un rendimiento significativamente mejorado y costos más bajos en comparación con las instancias basadas en x86. Los Graviton2 son procesadores diseñados por AWS basados en la arquitectura Arm, optimizados para proporcionar un rendimiento y una eficiencia energética superiores.
+
+#### AWS Outposts
+
+AWS Outposts extiende la infraestructura y los servicios de AWS a cualquier centro de datos, espacio de co-ubicación o instalación on-premises. Esto permite a las empresas ejecutar aplicaciones en el mismo hardware en sus propias instalaciones, manteniendo la consistencia y la interoperabilidad con los servicios en la nube de AWS.
+
+#### AWS Wavelength
+
+AWS Wavelength integra los servicios de AWS en el borde de las redes 5G de los proveedores de telecomunicaciones. Esto reduce la latencia de las aplicaciones que requieren procesamiento en tiempo real, como juegos en la nube, realidad aumentada y aplicaciones IoT.
+
+#### AWS Local Zones
+
+AWS Local Zones coloca servicios de computación, almacenamiento, base de datos y otros servicios de AWS más cerca de los usuarios finales, permitiendo aplicaciones que requieren latencia de milisegundos. Esto es ideal para aplicaciones de medios y entretenimiento, juegos en línea y realidad virtual.
+
+### Integración Continua y Entrega Continua (CI/CD)
+
+AWS ha mejorado sus herramientas y servicios para soportar mejor los pipelines de CI/CD. Esto incluye mejoras en AWS CodePipeline, AWS CodeBuild, AWS CodeDeploy y AWS CodeStar, proporcionando a los desarrolladores una suite completa de herramientas para automatizar y gestionar sus despliegues.
+
+Estas características avanzadas más recientes reflejan el compromiso de AWS de mantenerse a la vanguardia de la tecnología en la nube, ofreciendo a sus usuarios las herramientas y capacidades necesarias para enfrentar los desafíos tecnológicos modernos.
 
 **Zonas de disponibilidad y regiones**
 
