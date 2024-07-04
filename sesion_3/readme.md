@@ -40,3 +40,21 @@
   - Crear un tópico SNS y una cola SQS
   - Configurar el tópico SNS para enviar mensajes a la cola SQS
   - Configurar Lambda para procesar mensajes de la cola SQS
+
+#### 3.7. [Automatización de Implementaciones con AWS SAM](introduccion_sam.md)
+- **Conceptos básicos de SAM**
+  - Definición y uso
+  - Ventajas de usar SAM para definir aplicaciones serverless
+- **Plantillas de SAM**
+  - Estructura y componentes de una plantilla SAM
+  - Ejemplos de plantillas
+
+#### 3.8. [Laboratorio: Implementación de Aplicaciones Serverless con SAM](laboratorio_sam.md)
+- **Descripción del laboratorio:**
+  - Definir e implementar una aplicación serverless utilizando SAM.
+- **Recursos necesarios:**
+  - AWS CLI, AWS SAM CLI, SDK de AWS para Java
+- **Ejercicio práctico:**
+  - Crear una plantilla SAM para una función Lambda
+  - Desplegar la aplicación utilizando SAM
+  - Probar la implementación y realizar ajustes
