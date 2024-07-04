@@ -46,6 +46,7 @@
 #### 4.7. [Optimización y Escalabilidad](optimizacion_escalabilidad.md)
 - **Ajustes de rendimiento**
 - **Escalado automático y configuraciones avanzadas**
+- **Inicio cold / warm**
 
 #### 4.8. [Laboratorio: Optimización y Escalabilidad](laboratorio_optimizacion.md)
 - **Descripción del laboratorio:**
