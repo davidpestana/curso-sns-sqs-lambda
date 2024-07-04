@@ -43,6 +43,7 @@
 - **Componentes de Step Functions**
   - Estados y transiciones
   - Tipos de estados
+  - Flujos de trabajo
 
 #### 2.7. [Laboratorio: Creación de Flujos de Trabajo con Step Functions](laboratorio_step_functions.md)
 - **Descripción del laboratorio:**
