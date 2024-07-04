@@ -33,6 +33,7 @@
 - **Gestión de permisos con IAM**
 - **Usuarios, Roles, Policies**
 - **Buenas prácticas de seguridad**
+- **Cifrado** [uso de aws KMS](cifrado.md) 
 
 #### 4.6. [Laboratorio: Seguridad y Permisos](laboratorio_seguridad.md)
 - **Descripción del laboratorio:**
