@@ -1,153 +1,183 @@
-# Introducción a AWS
+### Sesión 1: Introducción a AWS y Fundamentos de Lambda
 
-Amazon Web Services (AWS) es una plataforma de servicios en la nube que ofrece una vasta colección de servicios de infraestructura y aplicaciones, lo que permite a las empresas y desarrolladores de todos los tamaños implementar y gestionar aplicaciones de manera más eficiente y escalable. AWS es conocido por su modelo de pago por uso, su flexibilidad y su capacidad de escalado, lo que lo convierte en una opción popular para una amplia gama de aplicaciones y necesidades empresariales.
+#### 1.1. Introducción a AWS
 
-#### ¿Qué es AWS?
+##### ¿Qué es AWS?
 
-AWS proporciona una serie de servicios de TI bajo demanda a través de la web, que incluye almacenamiento, computación, bases de datos, redes, herramientas de desarrollo, inteligencia artificial, seguridad y mucho más. Los servicios de AWS son accesibles globalmente, permitiendo a las empresas acceder a recursos informáticos en cualquier lugar y en cualquier momento, sin la necesidad de invertir en infraestructura física costosa y compleja.
+**Historia y evolución**
 
-##### Historia y evolución de AWS
+Amazon Web Services (AWS) es la plataforma de servicios en la nube más completa y adoptada en el mundo. Ofrece más de 200 servicios integrales de centros de datos a nivel mundial. AWS se lanzó en 2006, y desde entonces, ha transformado la manera en que las empresas operan, ofreciendo soluciones escalables y de bajo costo. La idea de AWS surgió cuando Amazon decidió aprovechar su infraestructura interna y su experiencia en la gestión de centros de datos para ofrecer servicios tecnológicos a otras empresas.
 
-AWS fue lanzado oficialmente en 2006 con la introducción de dos servicios fundamentales: Amazon S3 (Simple Storage Service) y Amazon EC2 (Elastic Compute Cloud). Estos servicios iniciales permitieron a los desarrolladores almacenar datos y acceder a capacidad computacional bajo demanda, estableciendo la base para una plataforma de servicios en la nube extensible.
+![AWS Logo](https://raw.githubusercontent.com/aws/aws-sdk-java/main/aws.png)
 
-**Línea de tiempo de AWS:**
-- **2006:** Lanzamiento de Amazon S3 y EC2.
-- **2007-2008:** Introducción de servicios como Amazon SimpleDB, Amazon Simple Queue Service (SQS) y Amazon CloudFront.
-- **2010:** Lanzamiento de Amazon RDS (Relational Database Service).
-- **2012:** AWS supera los 30 servicios, incluyendo Elastic Beanstalk y DynamoDB.
-- **2014:** Introducción de AWS Lambda, que permite ejecutar código en respuesta a eventos sin aprovisionar servidores.
-- **2016:** AWS celebra su décimo aniversario con más de 70 servicios disponibles.
-- **2020:** AWS cuenta con más de 200 servicios y una presencia global significativa con múltiples regiones y zonas de disponibilidad.
+- **2002:** Amazon lanza su primer servicio web, Amazon Web Services, que permitía a los desarrolladores integrar características de Amazon en sus propios sitios web.
+- **2006:** Se lanzan los servicios fundacionales de AWS: Amazon S3 (Simple Storage Service) y Amazon EC2 (Elastic Compute Cloud).
+- **2010:** AWS experimenta un crecimiento significativo, con la incorporación de servicios como RDS (Relational Database Service) y Elastic Beanstalk.
+- **2014:** AWS presenta Lambda, un servicio de computación sin servidor que permite a los desarrolladores ejecutar código sin aprovisionar ni gestionar servidores.
+- **2019:** AWS alcanza un ingreso anual de 35 mil millones de dólares, consolidándose como líder del mercado de la nube.
 
-![AWS Evolution](https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg)
+**Principales servicios y su propósito**
 
-##### Principales servicios y su propósito
-
-AWS proporciona una variedad de servicios que se agrupan en varias categorías, cada una con un propósito específico. A continuación, se describen algunos de los principales servicios y sus usos:
+AWS ofrece una amplia gama de servicios, agrupados en varias categorías:
 
 1. **Cómputo:**
-   - **Amazon EC2 (Elastic Compute Cloud):** Proporciona capacidad de computación escalable en la nube. Los usuarios pueden lanzar instancias de servidores virtuales según sus necesidades y pagar solo por el tiempo de uso. EC2 permite a los desarrolladores escalar la capacidad de computación hacia arriba o hacia abajo en función de la demanda.
-   - **AWS Lambda:** Permite ejecutar código sin aprovisionar ni gestionar servidores. Lambda ejecuta el código solo cuando se desencadenan eventos específicos y cobra solo por el tiempo de computación consumido durante la ejecución del código.
+   - **Amazon EC2 (Elastic Compute Cloud):** Proporciona capacidad de computación escalable en la nube. Permite a los usuarios lanzar instancias de servidor virtual en la infraestructura de Amazon. Las instancias EC2 se pueden configurar con diferentes tamaños de CPU, memoria y almacenamiento, y se pueden utilizar para diversas aplicaciones, desde servidores web hasta análisis de datos.
+
+   ![Amazon EC2](https://raw.githubusercontent.com/aws/aws-sdk-java/main/ec2.png)
 
 2. **Almacenamiento:**
-   - **Amazon S3 (Simple Storage Service):** Servicio de almacenamiento de objetos que ofrece una infraestructura altamente escalable, duradera y segura para almacenar y recuperar cualquier cantidad de datos. S3 se utiliza comúnmente para almacenamiento de datos, copias de seguridad, recuperación ante desastres y distribución de contenido estático.
-   - **Amazon EBS (Elastic Block Store):** Proporciona almacenamiento en bloques para uso con instancias EC2. EBS es adecuado para aplicaciones que requieren acceso a almacenamiento de bloques persistente y de baja latencia.
+   - **Amazon S3 (Simple Storage Service):** Servicio de almacenamiento de objetos que ofrece escalabilidad, disponibilidad y seguridad de datos a un costo bajo. Es ideal para copias de seguridad, almacenamiento de archivos, y distribución de contenido. S3 garantiza una durabilidad del 99.999999999% para los objetos almacenados.
+
+   ![Amazon S3](https://raw.githubusercontent.com/aws/aws-sdk-java/main/s3.png)
 
 3. **Bases de datos:**
-   - **Amazon RDS (Relational Database Service):** Facilita la configuración, operación y escalado de bases de datos relacionales en la nube. RDS soporta varios motores de bases de datos, proporcionando una solución flexible y gestionada para aplicaciones que requieren bases de datos SQL. Las características clave incluyen:
-     - **Automatización de tareas administrativas:** Como copias de seguridad, parches de software y escalado de hardware.
-     - **Alta disponibilidad:** A través de Multi-AZ (disponibilidad en múltiples zonas) que replica automáticamente los datos en una segunda zona de disponibilidad.
-     - **Read replicas:** Permiten escalar horizontalmente las operaciones de lectura.
-   - **Amazon DynamoDB:** Servicio de base de datos NoSQL totalmente gestionado que proporciona rendimiento rápido y predecible con escalabilidad automática. DynamoDB es ideal para aplicaciones que requieren baja latencia y escalabilidad a gran escala.
+   - **Amazon RDS (Relational Database Service):** Facilita la configuración, operación y escalado de bases de datos relacionales en la nube. Compatible con bases de datos como MySQL, PostgreSQL, MariaDB, Oracle y SQL Server. RDS automatiza tareas administrativas como actualizaciones de software, copias de seguridad y escalado.
 
-4. **Redes y entrega de contenido:**
-   - **Amazon VPC (Virtual Private Cloud):** Permite a los usuarios crear una red virtual privada en la nube de AWS. Los usuarios pueden definir su propio espacio de red y controlar aspectos como la configuración de subredes, tablas de enrutamiento y gateways. VPC proporciona un entorno seguro y aislado para desplegar recursos de AWS.
-   - **Amazon CloudFront:** Servicio de red de entrega de contenido (CDN) que distribuye contenido a los usuarios con baja latencia y altas velocidades de transferencia. CloudFront se integra con otros servicios de AWS para proporcionar una distribución de contenido segura y escalable.
+   ![Amazon RDS](https://raw.githubusercontent.com/aws/aws-sdk-java/main/rds.png)
 
-5. **Herramientas de desarrollo:**
-   - **AWS CodePipeline:** Servicio de entrega continua que automatiza los pasos de construcción, prueba y despliegue de aplicaciones. CodePipeline permite la integración continua y la entrega continua (CI/CD) para acelerar la entrega de software.
-   - **AWS CodeBuild:** Servicio de construcción totalmente gestionado que compila el código fuente, ejecuta pruebas y produce paquetes de software listos para el despliegue. CodeBuild escala automáticamente para manejar múltiples compilaciones en paralelo.
+4. **Seguridad y gestión de identidades:**
+   - **AWS IAM (Identity and Access Management):** Gestiona el acceso a los recursos de AWS de manera segura, permitiendo la creación y administración de usuarios y grupos, y la definición de políticas para controlar el acceso a los servicios y recursos. IAM permite establecer permisos detallados a nivel de recursos y acciones.
 
-6. **Seguridad y gestión de identidades:**
-   - **AWS IAM (Identity and Access Management):** Permite a los administradores controlar de manera segura el acceso a los servicios y recursos de AWS. IAM permite la gestión de usuarios y permisos, proporcionando un control granular sobre quién puede acceder a qué recursos y bajo qué condiciones.
-   - **AWS KMS (Key Management Service):** Servicio de gestión de claves que facilita la creación y el control de claves de cifrado para proteger los datos. KMS permite cifrar datos fácilmente en una amplia gama de servicios de AWS.
+   ![AWS IAM](https://raw.githubusercontent.com/aws/aws-sdk-java/main/iam.png)
 
-### Servicios principales de AWS
+5. **Redes y entrega de contenido:**
+   - **Amazon VPC (Virtual Private Cloud):** Permite provisionar una sección aislada de la nube de AWS donde se pueden lanzar recursos de AWS en una red virtual que se define. Proporciona control total sobre el entorno de red, incluyendo la selección del rango de direcciones IP, creación de subredes y configuración de tablas de rutas y puertas de enlace de red.
 
-Vamos a profundizar en algunos de los servicios principales de AWS que son fundamentales para cualquier proyecto en la nube:
+   ![Amazon VPC](https://raw.githubusercontent.com/aws/aws-sdk-java/main/vpc.png)
 
-#### Amazon EC2 (Elastic Compute Cloud)
+##### Servicios principales de AWS
 
-Amazon EC2 es uno de los servicios de AWS más utilizados. Proporciona capacidad de cómputo escalable en la nube, permitiendo a los usuarios lanzar y gestionar instancias de servidores virtuales. EC2 ofrece una amplia variedad de tipos de instancias optimizadas para diferentes casos de uso, como aplicaciones web, análisis de datos y procesamiento intensivo de gráficos. Las características clave incluyen:
+**Amazon EC2**
 
-- **Autoscaling:** Permite ajustar automáticamente la capacidad de EC2 en función de la demanda.
-- **Elastic Load Balancing:** Distribuye automáticamente el tráfico de aplicaciones entrante entre múltiples instancias EC2.
-- **Instancias Spot:** Ofrecen capacidad de EC2 no utilizada a precios reducidos.
+Amazon EC2 ofrece diferentes tipos de instancias para satisfacer diversas necesidades de computación. Algunos de los tipos de instancias incluyen:
 
-**Ejemplo de uso de Amazon EC2:**
+- **Instancias de propósito general:** Ideales para aplicaciones que necesitan un equilibrio de recursos de computación, memoria y redes. Ejemplo: t2.micro, m5.large.
+- **Instancias optimizadas para cómputo:** Adecuadas para aplicaciones con altos requisitos de procesamiento, como servidores web de alto rendimiento y análisis científicos. Ejemplo: c5.large, c5n.4xlarge.
+- **Instancias optimizadas para memoria:** Diseñadas para aplicaciones que requieren grandes cantidades de memoria, como bases de datos en memoria y análisis en tiempo real. Ejemplo: r5.large, x1e.32xlarge.
+- **Instancias optimizadas para almacenamiento:** Indicadas para aplicaciones que necesitan un acceso rápido y masivo a almacenamiento local, como bases de datos NoSQL y procesamiento de datos grandes. Ejemplo: i3.large, d2.8xlarge.
 
-Supongamos que tienes una aplicación web que espera un aumento significativo en el tráfico durante un evento promocional. Puedes utilizar Amazon EC2 para lanzar instancias adicionales y configurar el autoescalado para manejar el aumento de la carga.
+**Tecnología Nitro**
 
-**Código de ejemplo para lanzar una instancia EC2 usando AWS CLI:**
+La plataforma Nitro es la tecnología subyacente que potencia las instancias EC2 más recientes. Proporciona varias mejoras clave:
 
-```sh
-aws ec2 run-instances --image-id ami-0abcdef1234567890 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-12345678 --subnet-id subnet-6e7f829e
-```
+![AWS Nitro](https://raw.githubusercontent.com/aws/aws-sdk-java/main/nitro.png)
 
-#### Amazon S3 (Simple Storage Service)
+- **Desempeño mejorado:** La tecnología Nitro permite a las instancias EC2 utilizar casi toda la capacidad de la CPU y la memoria sin overhead de hipervisor.
+- **Seguridad avanzada:** Nitro incorpora capacidades de seguridad integradas, como cifrado de datos en reposo y en tránsito.
+- **Funcionalidad avanzada:** Nitro soporta características avanzadas como instancias de metal desnudo (bare metal), que permiten a las aplicaciones acceder directamente al hardware subyacente.
 
-Amazon S3 es un servicio de almacenamiento de objetos diseñado para almacenar y recuperar cualquier cantidad de datos desde cualquier lugar de la web. S3 proporciona durabilidad y disponibilidad elevadas, y se utiliza comúnmente para almacenamiento de datos, copias de seguridad, recuperación ante desastres y distribución de contenido. Las características clave incluyen:
+**Mecanismos de reservación**
 
-- **Durabilidad del 99.999999999% (11 nueves):** Asegura que los datos estén protegidos contra pérdida.
-- **Clases de almacenamiento:** Ofrecen diferentes niveles de durabilidad, disponibilidad y costo para satisfacer diversas necesidades.
-- **Gestión de versiones:** Mantiene múltiples versiones de un objeto para recuperar datos antiguos si es necesario.
+Amazon EC2 ofrece varios modelos de pago y mecanismos de reservación para optimizar costos:
 
-**Ejemplo de uso de Amazon S3:**
+- **On-Demand:** Permite pagar por capacidad de computación por segundo, sin compromisos a largo plazo. Es ideal para cargas de trabajo impredecibles.
+- **Reserved Instances:** Ofrece descuentos significativos en comparación con On-Demand al comprometerse a utilizar instancias por uno o tres años. Existen tres tipos de instancias reservadas:
+  - **Standard Reserved Instances:** Ofrecen el mayor descuento y flexibilidad limitada en términos de cambiar atributos de la instancia.
+  - **Convertible Reserved Instances:** Permiten cambiar los atributos de la instancia (como el tipo de instancia) a cambio de un menor descuento en comparación con las Standard.
+  - **Scheduled Reserved Instances:** Permiten reservar instancias para períodos específicos durante la semana.
+- **Spot Instances:** Ofrecen capacidad de computación no utilizada con descuentos significativos, ideales para cargas de trabajo flexibles y tolerantes a fallos.
 
-Puedes usar Amazon S3 para almacenar archivos multimedia grandes que se utilizan en tu sitio web o aplicación móvil, permitiendo una distribución rápida y eficiente a los usuarios finales.
+![AWS EC2 Pricing](https://raw.githubusercontent.com/aws/aws-sdk-java/main/ec2_pricing.png)
 
-**Código de ejemplo para subir un archivo a S3 usando AWS CLI:**
+**Amazon S3**
 
-```sh
-aws s3 cp myfile.txt s3://mybucket/myfile.txt
-```
+Amazon S3 está diseñado para ofrecer una durabilidad del 99.999999999% y una alta disponibilidad. Proporciona diferentes clases de almacenamiento para optimizar costos según las necesidades de acceso a los datos:
 
-#### Amazon RDS (Relational Database Service)
+![Amazon S3 Storage Classes](https://raw.githubusercontent.com/aws/aws-sdk-java/main/s3_storage_classes.png)
 
-Amazon RDS facilita la configuración, operación y escalado de bases de datos relacionales en la nube. RDS soporta varios motores de bases de datos, proporcionando una solución flexible y gestionada para aplicaciones que requieren bases de datos SQL. Las características clave incluyen:
+- **S3 Standard:** Para datos que se acceden con frecuencia.
+- **S3 Intelligent-Tiering:** Mueve automáticamente los datos entre dos niveles de acceso (frecuente e infrecuente) según los patrones de acceso.
+- **S3 Standard-IA (Infrequent Access):** Para datos a los que se accede menos frecuentemente, pero que aún necesitan estar rápidamente disponibles.
+- **S3 One Zone-IA:** Para datos infrecuentes que no necesitan la resiliencia de datos multizona.
+- **S3 Glacier:** Almacenamiento de bajo costo para archivado de datos y copias de seguridad a largo plazo.
+- **S3 Glacier Deep Archive:** La clase de almacenamiento más económica para archivado de datos que raramente se acceden y necesitan retención a largo plazo.
 
-- **Automatización de tareas administrativas:** Como copias de seguridad, parches de software y escalado de hardware.
-- **Alta disponibilidad:** A través de Multi-AZ (disponibilidad en múltiples zonas) que replica automáticamente los datos en una segunda zona de disponibilidad.
-- **Read replicas:** Permiten escalar horizontalmente las operaciones de lectura.
+**Amazon RDS**
 
-**Ejemplo de uso de Amazon RDS:**
+Amazon RDS automatiza muchas tareas administrativas tediosas y complejas, como la configuración de hardware, el aprovisionamiento de bases de datos, la aplicación de parches y las copias de seguridad. Los tipos de bases de datos compatibles incluyen:
 
-Si tienes una aplicación que requiere una base de datos SQL para almacenar datos transaccionales, puedes usar Amazon RDS para configurar y gestionar una base de datos relacional sin tener que preocuparte por las tareas administrativas.
+![Amazon RDS](https://raw.githubusercontent.com/aws/aws-sdk-java/main/rds.png)
 
-**Código de ejemplo para
+- **Amazon Aurora:** Compatible con MySQL y PostgreSQL, ofrece alto rendimiento y disponibilidad con un costo más bajo.
+- **MySQL:** Popular sistema de gestión de bases de datos relacional de código abierto.
+- **PostgreSQL:** Sistema de gestión de bases de datos relacional avanzado y de código abierto.
+- **MariaDB:** Derivado del proyecto MySQL, ofrece características avanzadas y mejoras de rendimiento.
+- **Oracle Database:** Base de datos comercial con características avanzadas y soporte de AWS.
+- **Microsoft SQL Server:** Sistema de gestión de bases de datos de Microsoft, con soporte completo en AWS.
 
- lanzar una instancia RDS usando AWS CLI:**
+**AWS IAM**
 
-```sh
-aws rds create-db-instance --db-instance-identifier mydatabase --db-instance-class db.t2.micro --engine mysql --master-username admin --master-user-password password --allocated-storage 20
-```
+AWS IAM permite gestionar el acceso a los servicios y recursos de AWS de manera segura. Las características principales incluyen:
 
-#### AWS IAM (Identity and Access Management)
+![AWS IAM](https://raw.githubusercontent.com/aws/aws-sdk-java/main/iam.png)
 
-AWS IAM permite a los administradores controlar el acceso a los servicios y recursos de AWS de manera segura. IAM facilita la creación y gestión de usuarios y grupos, y el establecimiento de permisos detallados para controlar quién puede acceder a qué recursos. Las características clave incluyen:
+- **Usuarios y grupos:** Permite crear y gestionar usuarios individuales y agruparlos en equipos para facilitar la gestión de permisos.
+- **Roles:** Permite definir un conjunto de permisos que pueden ser asumidos por entidades confiables, como instancias EC2 o usuarios de otras cuentas AWS.
+- **Políticas:** Documentos JSON que definen permisos y controles de acceso a los recursos de AWS.
+- **MFA (Multi-Factor Authentication):** Añade una capa adicional de seguridad al requerir un segundo factor de autenticación,
 
-- **Políticas basadas en roles:** Definen los permisos para usuarios y grupos.
-- **Autenticación multifactor (MFA):** Proporciona una capa adicional de seguridad.
-- **Federación de identidades:** Permite a los usuarios acceder a recursos de AWS utilizando credenciales existentes de servicios como Active Directory.
+ como un dispositivo móvil o una llave de seguridad.
 
-**Ejemplo de uso de AWS IAM:**
+**Amazon VPC**
 
-Puedes crear un grupo IAM para desarrolladores en tu organización y definir políticas que les permitan acceder solo a los recursos necesarios para sus tareas diarias.
+Amazon VPC permite crear una red virtual aislada en la nube de AWS. Las características clave incluyen:
 
-**Código de ejemplo para crear un usuario IAM usando AWS CLI:**
+![Amazon VPC](https://raw.githubusercontent.com/aws/aws-sdk-java/main/vpc.png)
 
-```sh
-aws iam create-user --user-name Bob
-```
+- **Subredes:** Permiten segmentar la red en diferentes partes, como subredes públicas y privadas.
+- **Tablas de rutas:** Definen cómo se enruta el tráfico dentro de la VPC.
+- **Puertas de enlace de Internet:** Permiten la comunicación entre recursos dentro de la VPC y la Internet pública.
+- **Puertas de enlace NAT:** Permiten que las instancias en una subred privada accedan a Internet de manera segura.
+- **Endpoints de VPC:** Permiten una conexión privada y segura entre la VPC y los servicios de AWS sin usar una puerta de enlace de Internet.
+- **Grupos de seguridad y ACLs (Access Control Lists):** Proporcionan control detallado sobre el tráfico entrante y saliente a nivel de instancia y subred.
 
-#### Amazon VPC (Virtual Private Cloud)
+#### Ejemplo práctico: Implementación de una aplicación web simple usando AWS
 
-Amazon VPC permite a los usuarios crear una red virtual privada en la nube de AWS, proporcionando control total sobre el entorno de red, incluida la selección de rangos de IP, la creación de subredes y la configuración de tablas de enrutamiento y gateways. Las características clave incluyen:
+Para ilustrar cómo una empresa puede utilizar varios servicios de AWS para implementar y gestionar una aplicación web simple, asegurando escalabilidad, seguridad y disponibilidad, seguimos los siguientes pasos:
 
-- **Subredes:** Pueden ser públicas (con acceso a Internet) o privadas (sin acceso directo a Internet).
-- **Seguridad:** Mediante el uso de listas de control de acceso (ACL) y grupos de seguridad para controlar el tráfico entrante y saliente.
-- **Conectividad híbrida:** Permite la conexión segura de la VPC a centros de datos locales mediante AWS Direct Connect o VPN.
+1. **Lanzamiento de una instancia EC2 para el servidor web:**
+   ```bash
+   aws ec2 run-instances --image-id ami-0abcdef1234567890 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-0123456789abcdef0 --subnet-id subnet-6e7f829e
+   ```
 
-**Ejemplo de uso de Amazon VPC:**
+   ![Launch EC2 Instance](https://raw.githubusercontent.com/aws/aws-sdk-java/main/ec2_launch.png)
 
-Puedes usar Amazon VPC para crear una red aislada donde se ejecutan tus aplicaciones críticas, garantizando que solo las instancias dentro de la VPC puedan comunicarse entre sí y con recursos específicos.
+2. **Configuración de un bucket S3 para almacenar archivos estáticos:**
+   ```bash
+   aws s3api create-bucket --bucket mi-bucket-web --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
+   aws s3 cp mi-sitio-web/ s3://mi-bucket-web/ --recursive
+   ```
 
-**Código de ejemplo para crear una VPC usando AWS CLI:**
+   ![S3 Bucket](https://raw.githubusercontent.com/aws/aws-sdk-java/main/s3_bucket.png)
 
-```sh
-aws ec2 create-vpc --cidr-block 10.0.0.0/16
-```
+3. **Creación de una base de datos RDS para almacenar datos de la aplicación:**
+   ```bash
+   aws rds create-db-instance --db-instance-identifier mi-base-datos --allocated-storage 20 --db-instance-class db.t2.micro --engine mysql --master-username admin --master-user-password password --backup-retention-period 3 --availability-zone us-west-2a
+   ```
 
-### Conclusión
+   ![RDS Database](https://raw.githubusercontent.com/aws/aws-sdk-java/main/rds_instance.png)
 
-AWS ofrece una plataforma robusta y flexible que permite a las empresas innovar y escalar sus aplicaciones de manera eficiente. Con una amplia gama de servicios y una comunidad global de usuarios, AWS sigue siendo la opción preferida para muchas organizaciones que buscan aprovechar la potencia de la computación en la nube. Las características avanzadas, la seguridad, la escalabilidad y el modelo de pago por uso hacen de AWS una solución atractiva para una amplia variedad de casos de uso.
+4. **Configuración de roles y permisos con IAM:**
+   ```bash
+   aws iam create-role --role-name mi-rol-ec2 --assume-role-policy-document file://trust-policy.json
+   aws iam attach-role-policy --role-name mi-rol-ec2 --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+   aws iam attach-role-policy --role-name mi-rol-ec2 --policy-arn arn:aws:iam::aws:policy/AmazonRDSFullAccess
+   ```
+
+   ![IAM Role](https://raw.githubusercontent.com/aws/aws-sdk-java/main/iam_role.png)
+
+5. **Configuración de una VPC para aislar la red de la aplicación:**
+   ```bash
+   aws ec2 create-vpc --cidr-block 10.0.0.0/16
+   aws ec2 create-subnet --vpc-id vpc-0abcdef1234567890 --cidr-block 10.0.1.0/24
+   aws ec2 create-internet-gateway
+   aws ec2 attach-internet-gateway --vpc-id vpc-0abcdef1234567890 --internet-gateway-id igw-0abcdef1234567890
+   aws ec2 create-route-table --vpc-id vpc-0abcdef1234567890
+   aws ec2 create-route --route-table-id rtb-0abcdef1234567890 --destination-cidr-block 0.0.0.0/0 --gateway-id igw-0abcdef1234567890
+   ```
+
+   ![VPC Configuration](https://raw.githubusercontent.com/aws/aws-sdk-java/main/vpc_config.png)
+
+Este ejemplo ilustra cómo una empresa puede utilizar varios servicios de AWS para implementar y gestionar una aplicación web simple, asegurando escalabilidad, seguridad y disponibilidad.
+
+---
