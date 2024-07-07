@@ -67,7 +67,7 @@ Aquí tienes una versión mejorada del índice para la Sesión 1:
   - Paso 3: Desplegar y probar la función Lambda.
 
 
-#### 1.7. [Estrategias de Control de Versiones](versionado.md)
+#### 1.7. [Estrategias de Control de Versiones](estrategias.md)
 - **Control de Versiones con Git**
   - Flujo de trabajo de Git
   - Estrategias de branching
@@ -77,6 +77,7 @@ Aquí tienes una versión mejorada del índice para la Sesión 1:
 - **Herramientas de IaC**
   - AWS CloudFormation
   - Terraform
+- **[Ejemplo funcional](versionado.md)**
 
 #### 1.8. [Laboratorio: Control de Versiones y CI/CD](laboratorio_versionado.md)
 - **Descripción del laboratorio**
