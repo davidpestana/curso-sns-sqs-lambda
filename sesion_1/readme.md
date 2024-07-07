@@ -65,3 +65,30 @@ Aquí tienes una versión mejorada del índice para la Sesión 1:
   - Paso 1: Crear y publicar un Layer con la biblioteca `requests`.
   - Paso 2: Crear una función Lambda que utilice el Layer.
   - Paso 3: Desplegar y probar la función Lambda.
+
+
+#### 1.7. [Estrategias de Control de Versiones](versionado.md)
+- **Control de Versiones con Git**
+  - Flujo de trabajo de Git
+  - Estrategias de branching
+- **Versionado de Funciones Lambda**
+  - Creación de versiones
+  - Uso de aliases
+- **Herramientas de IaC**
+  - AWS CloudFormation
+  - Terraform
+
+#### 1.8. [Laboratorio: Control de Versiones y CI/CD](laboratorio_versionado.md)
+- **Descripción del laboratorio**
+- **Recursos necesarios**
+- **Ejercicio práctico**
+  - Paso 1: Configuración del entorno de desarrollo.
+  - Paso 2: Crear un repositorio Git.
+  - Paso 3: Configurar AWS Lambda y subir el código.
+  - Paso 4: Configurar AWS CodePipeline.
+  - Paso 5: Configurar AWS CloudFormation.
+  - Paso 6: Integrar CloudFormation con CodePipeline.
+  - Paso 7: Configurar monitoreo con CloudWatch.
+  - Paso 8: Añadir pruebas automáticas.
+  - Paso 9: Implementar Canary Deployments con AWS Lambda.
+  - Paso 10: Configurar monitoreo y alerta con CloudWatch.
