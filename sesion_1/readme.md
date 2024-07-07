@@ -50,3 +50,18 @@ Aquí tienes una versión mejorada del índice para la Sesión 1:
   - Implementar la función Lambda en Java
   - Desplegar la función en AWS Lambda
   - Probar la función desde la consola de AWS
+ 
+#### 1.5. [Uso de Lambda Layers](aws_lambda_layer.md)
+- **Qué son los Lambda Layers**
+- **Beneficios de usar Layers**
+- **Pasos para crear un Lambda Layer**
+- **Adjuntar un Layer a una Función Lambda**
+- **Ejemplo de código**
+
+#### 1.6. [Laboratorio: Creación y Uso de Lambda Layers](laboratorio_lambda_layers.md)
+- **Descripción del laboratorio**
+- **Recursos necesarios**
+- **Ejercicio práctico**
+  - Paso 1: Crear y publicar un Layer con la biblioteca `requests`.
+  - Paso 2: Crear una función Lambda que utilice el Layer.
+  - Paso 3: Desplegar y probar la función Lambda.
