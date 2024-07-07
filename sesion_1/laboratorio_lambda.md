@@ -43,7 +43,7 @@ Crear un proyecto Maven en tu IDE y agregar las dependencias necesarias para AWS
    ```
 
 ### Iteración 2: Implementación Básica de la Función Lambda
-
+[detalles](detalles.l1.1.md)
 **Motivación:**
 Comenzar con una implementación básica permite establecer la estructura de la función Lambda y asegura que el código se ejecute correctamente.
 
