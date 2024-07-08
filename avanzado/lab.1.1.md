@@ -20,7 +20,7 @@ Crear una arquitectura en AWS que utiliza Lambda para procesar eventos de CloudW
 
 2. Crear un archivo `main.tf` y añadir la configuración de Terraform:
 
-   ```hcl
+```hcl
 provider "aws" {
   region = "eu-west-2" # Región de Londres
 }
@@ -63,8 +63,7 @@ resource "aws_db_instance" "mydb" {
   skip_final_snapshot  = true
   db_subnet_group_name = aws_db_subnet_group.default.name
 }
-
-   ```
+```
 
 3. Ejecutar Terraform para desplegar los recursos:
 
