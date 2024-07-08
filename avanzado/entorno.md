@@ -86,7 +86,41 @@ services:
 AWS_ACCESS_KEY_ID=XXX
 AWS_SECRET_ACCESS_KEY=XXX
 AWS_DEFAULT_REGION=eu-west-1
-```
+´´´
+
+# REPARTO 
+
+### Reparto de Regiones y VPCs para los Alumnos
+
+| Alumno  | Región     | VPC Name |
+|---------|------------|----------|
+| Alumno 1| eu-west-1  | alumno1  |
+| Alumno 2| eu-west-1  | alumno2  |
+| Alumno 3| eu-west-1  | alumno3  |
+| Alumno 4| eu-west-1  | alumno4  |
+| Alumno 5| eu-west-2  | alumno5  |
+| Alumno 6| eu-west-2  | alumno6  |
+| Alumno 7| eu-west-2  | alumno7  |
+| Alumno 8| eu-west-2  | alumno8  |
+| Alumno 9| eu-central-1| alumno9  |
+| Alumno 10| eu-central-1| alumno10 |
+| Alumno 11| eu-central-1| alumno11 |
+| Alumno 12| eu-central-1| alumno12 |
+| Alumno 13| eu-north-1 | alumno13 |
+| Alumno 14| eu-north-1 | alumno14 |
+| Alumno 15| eu-north-1 | alumno15 |
+| Alumno 16| eu-north-1 | alumno16 |
+
+### Detalles de las Regiones
+
+- **eu-west-1**: Irlanda
+- **eu-west-2**: Londres
+- **eu-central-1**: Fráncfort
+- **eu-north-1**: Estocolmo
+
+Cada alumno tendrá su propia VPC nombrada según el esquema "alumnoX", donde X es su número de alumno. Esto asegura que cada región europea tendrá exactamente 4 VPCs distribuidas entre los alumnos.
+
+
 
 
 # CREAR INSTANCIA
