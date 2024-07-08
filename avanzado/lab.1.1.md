@@ -51,15 +51,14 @@ resource "aws_db_subnet_group" "default" {
 }
 
 resource "aws_db_instance" "mydb" {
+  db_name              = "alumnoXX"
   allocated_storage    = 20
   storage_type         = "gp2"
   engine               = "postgres"
-  engine_version       = "13.3"
+  engine_version       = "16.3"
   instance_class       = "db.t3.micro"
-  name                 = "mydatabase"
-  username             = "admin"
+  username             = "postgres"
   password             = "password123"
-  parameter_group_name = "default.postgres13"
   skip_final_snapshot  = true
   db_subnet_group_name = aws_db_subnet_group.default.name
 }
