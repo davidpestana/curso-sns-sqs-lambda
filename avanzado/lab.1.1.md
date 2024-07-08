@@ -1,7 +1,3 @@
-En una cuenta de AWS virgen, es probable que no haya muchos eventos generados de manera natural. Para el laboratorio 1.1, donde queremos procesar eventos de CloudWatch con una Lambda, necesitamos asegurarnos de que se generen eventos de manera continua. Una solución es utilizar un generador de eventos similar al descrito en el laboratorio 1.2 para garantizar que haya un flujo constante de eventos que la Lambda pueda procesar.
-
-A continuación, se explica cómo ajustar el laboratorio 1.1 para incluir la generación de eventos:
-
 ### Lab 1.1: Creación de una Arquitectura Lambda que Procesa Eventos de CloudWatch y los Almacena en una Tabla RDS PostgreSQL utilizando Terraform y SAM
 
 #### Objetivo
