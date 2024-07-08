@@ -87,3 +87,9 @@ AWS_ACCESS_KEY_ID=XXX
 AWS_SECRET_ACCESS_XXX
 AWS_DEFAULT_REGION=eu-west-1
 ```
+
+
+# CREAR INSTANCIA
+```
+docker compose run -it --rm aws
+```
