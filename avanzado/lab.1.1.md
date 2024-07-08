@@ -21,41 +21,49 @@ Crear una arquitectura en AWS que utiliza Lambda para procesar eventos de CloudW
 2. Crear un archivo `main.tf` y añadir la configuración de Terraform:
 
    ```hcl
-   provider "aws" {
-     region = "us-west-2"
-   }
+provider "aws" {
+  region = "eu-west-2" # Región de Londres
+}
 
-   resource "aws_vpc" "my_vpc" {
-     cidr_block = "10.0.0.0/16"
-   }
+resource "aws_vpc" "my_vpc" {
+  cidr_block = "10.0.0.0/16"
+}
 
-   resource "aws_subnet" "my_subnet" {
-     vpc_id     = aws_vpc.my_vpc.id
-     cidr_block = "10.0.1.0/24"
-   }
+resource "aws_subnet" "my_subnet_a" {
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "eu-west-2a"
+}
 
-   resource "aws_db_subnet_group" "default" {
-     name       = "main"
-     subnet_ids = [aws_subnet.my_subnet.id]
+resource "aws_subnet" "my_subnet_b" {
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "eu-west-2b"
+}
 
-     tags = {
-       Name = "My DB subnet group"
-     }
-   }
+resource "aws_db_subnet_group" "default" {
+  name       = "main"
+  subnet_ids = [aws_subnet.my_subnet_a.id, aws_subnet.my_subnet_b.id]
 
-   resource "aws_db_instance" "mydb" {
-     allocated_storage    = 20
-     storage_type         = "gp2"
-     engine               = "postgres"
-     engine_version       = "13.3"
-     instance_class       = "db.t3.micro"
-     name                 = "mydatabase"
-     username             = "admin"
-     password             = "password123"
-     parameter_group_name = "default.postgres13"
-     skip_final_snapshot  = true
-     db_subnet_group_name = aws_db_subnet_group.default.name
-   }
+  tags = {
+    Name = "My DB subnet group"
+  }
+}
+
+resource "aws_db_instance" "mydb" {
+  allocated_storage    = 20
+  storage_type         = "gp2"
+  engine               = "postgres"
+  engine_version       = "13.3"
+  instance_class       = "db.t3.micro"
+  name                 = "mydatabase"
+  username             = "admin"
+  password             = "password123"
+  parameter_group_name = "default.postgres13"
+  skip_final_snapshot  = true
+  db_subnet_group_name = aws_db_subnet_group.default.name
+}
+
    ```
 
 3. Ejecutar Terraform para desplegar los recursos:
