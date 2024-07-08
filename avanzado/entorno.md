@@ -1,6 +1,6 @@
 # Dockerfile
 
-´´´
+```
 FROM amazon/aws-cli
 ENV HOME /workspace
 
@@ -60,13 +60,13 @@ USER operador
 # Comando predeterminado para ejecutar al iniciar el contenedor
 ENTRYPOINT [ "/bin/bash" ]
 
-´´´
+```
 
 
 
 # docker-compose.yaml
 
-´´´
+```
 services:
   aws:
     build: 
@@ -77,13 +77,13 @@ services:
       - ~/.ssh:/workspace/.ssh
     env_file:
       - .env
-´´´
+```
 
 
 # .env
 
-´´´
+```
 AWS_ACCESS_KEY_ID=XXX
 AWS_SECRET_ACCESS_XXX
 AWS_DEFAULT_REGION=eu-west-1
-´´´
+```
