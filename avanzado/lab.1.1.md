@@ -1,3 +1,7 @@
+En una cuenta de AWS virgen, es probable que no haya muchos eventos generados de manera natural. Para el laboratorio 1.1, donde queremos procesar eventos de CloudWatch con una Lambda, necesitamos asegurarnos de que se generen eventos de manera continua. Una solución es utilizar un generador de eventos similar al descrito en el laboratorio 1.2 para garantizar que haya un flujo constante de eventos que la Lambda pueda procesar.
+
+A continuación, se explica cómo ajustar el laboratorio 1.1 para incluir la generación de eventos:
+
 ### Lab 1.1: Creación de una Arquitectura Lambda que Procesa Eventos de CloudWatch y los Almacena en una Tabla RDS PostgreSQL utilizando Terraform y SAM
 
 #### Objetivo
@@ -118,6 +122,8 @@ Crear una arquitectura en AWS que utiliza Lambda para procesar eventos de CloudW
 
        @Override
        public String handleRequest(CloudWatchEvent event, Context context) {
+           long startTime = System.currentTimeMillis();
+
            String instanceId = event.getDetail().get("instance-id").toString();
            String state = event.getDetail().get("state").toString();
 
@@ -135,6 +141,10 @@ Crear una arquitectura en AWS que utiliza Lambda para procesar eventos de CloudW
                context.getLogger().log("Error: " + e.getMessage());
                return "Error: " + e.getMessage();
            }
+
+           long endTime = System.currentTimeMillis();
+           long duration = endTime - startTime;
+           context.getLogger().log("Execution time: " + duration + " ms");
 
            return "Inserted " + instanceId + " with state " + state;
        }
@@ -249,7 +259,9 @@ Crear una arquitectura en AWS que utiliza Lambda para procesar eventos de CloudW
      LambdaInvokePermission:
        Type: 'AWS::Lambda::Permission'
        Properties:
-         FunctionName: !GetAtt CloudWatchToRDSFunction.Arn
+         FunctionName: !GetAtt CloudWatchToRDSFunction.A
+
+rn
          Action: 'lambda:InvokeFunction'
          Principal: 'events.amazonaws.com'
          SourceArn: !GetAtt CloudWatchEventRule.Arn
@@ -278,19 +290,124 @@ Crear una arquitectura en AWS que utiliza Lambda para procesar eventos de CloudW
    sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket YOUR_S3_BUCKET_NAME
    ```
 
-3. Desple
-
-gar la aplicación SAM:
+3. Desplegar la aplicación SAM:
 
    ```sh
    sam deploy --template-file packaged.yaml --stack-name lambda-cloudwatch-rds --capabilities CAPABILITY_IAM --parameter-overrides DBHost=${aws_db_instance.mydb.endpoint} DBName=mydatabase DBUser=admin DBPassword=password123
    ```
 
-### Paso 4: Validación
+### Paso 4: Generar Eventos en una Instancia EC2
 
-1. Generar eventos de CloudWatch simulando cambios de estado en instancias EC2.
-2. Verificar que los eventos sean capturados por la Lambda y que se inserten registros en la tabla RDS.
+1. Crear un archivo `event_generator.tf` para definir la configuración de Terraform para el generador de eventos:
+
+   ```hcl
+   resource "aws_instance" "event_generator" {
+     ami           = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI
+     instance_type = "t2.micro"
+     key_name      = "my-key" # Reemplaza con tu propia clave SSH
+
+     vpc_security_group_ids = [aws_security_group.event_generator_sg.id]
+     subnet_id              = aws_subnet.my_subnet.id
+
+     tags = {
+       Name = "EventGeneratorInstance"
+     }
+
+     user_data = <<-EOF
+                 #!/bin/bash
+                 yum update -y
+                 amazon-linux-extras install python3 -y
+                 pip3 install boto3
+                 EOF
+   }
+
+   resource "aws_security_group" "event_generator_sg" {
+     name_prefix = "event_generator_sg"
+
+     ingress {
+       from_port   = 22
+       to_port     = 22
+       protocol    = "tcp"
+       cidr_blocks = ["0.0.0.0/0"]
+     }
+
+     egress {
+       from_port   = 0
+       to_port     = 0
+       protocol    = "-1"
+       cidr_blocks = ["0.0.0.0/0"]
+     }
+   }
+   ```
+
+2. Ejecutar Terraform para desplegar la instancia EC2 con el generador de eventos:
+
+   ```sh
+   terraform apply -target=aws_instance.event_generator
+   ```
+
+3. Acceder a la instancia EC2 mediante SSH:
+
+   ```sh
+   ssh -i "my-key.pem" ec2-user@<instance_public_ip>
+   ```
+
+4. Crear un archivo `event_generator.py` con el siguiente contenido:
+
+   ```python
+   import boto3
+   import json
+   import time
+   import random
+
+   cloudwatch = boto3.client('events')
+
+   def generate_event(instance_id, state):
+       detail = {
+           "instance-id": instance_id,
+           "state": state
+       }
+       event = {
+           'Source': 'aws.ec2',
+           'DetailType': 'EC2 Instance State-change Notification',
+           'Detail': json.dumps(detail),
+           'Resources': [
+               f'arn:aws:ec2:us-west-2:123456789012:instance/{instance_id}'
+           ]
+       }
+       return event
+
+   def main():
+       instance_ids = [f'i-{i:09d}' for i in range(1000)]
+       states = ['pending', 'running', 'stopping', 'stopped', 'shutting-down', 'terminated']
+       
+       while True:
+           instance_id = random.choice(instance_ids)
+           state = random.choice(states)
+           event = generate_event(instance_id, state)
+           
+           response = cloudwatch.put_events(
+               Entries=[event]
+           )
+           
+           print(f"Generated event for instance {instance_id} with state {state}")
+           time.sleep(0.1)  # Ajusta el intervalo de tiempo según sea necesario
+
+   if __name__ == "__main__":
+       main()
+   ```
+
+5. Ejecutar el script para iniciar la generación de eventos:
+
+   ```sh
+   python3 event_generator.py
+   ```
+
+### Paso 5: Validación
+
+1. Observar los tiempos de ejecución en los registros de CloudWatch Logs para la función Lambda.
+2. Utilizar pgAnalyze para monitorizar la carga y el rendimiento de la base de datos PostgreSQL.
 
 ### Conclusión
 
-Este laboratorio te ha guiado en la creación de una arquitectura que consume eventos de CloudWatch y los procesa mediante una función Lambda, almacenando la información en una base de datos RDS PostgreSQL. Además, has aprendido a usar Terraform y AWS SAM para la provisión de recursos en AWS y la implementación de funciones Lambda en Java.
+En este laboratorio se ha ajustado la configuración para incluir un generador de eventos que simule un alto número de cambios de estado en instancias EC2 y los envíe a CloudWatch. Esto asegura un flujo constante de eventos para la función Lambda y permite evaluar el rendimiento de la arquitectura bajo cargas altas.
