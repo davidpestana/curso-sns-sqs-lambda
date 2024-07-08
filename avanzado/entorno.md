@@ -78,3 +78,12 @@ services:
     env_file:
       - .env
 ´´´
+
+
+# .env
+
+´´´
+AWS_ACCESS_KEY_ID=XXX
+AWS_SECRET_ACCESS_XXX
+AWS_DEFAULT_REGION=eu-west-1
+´´´
