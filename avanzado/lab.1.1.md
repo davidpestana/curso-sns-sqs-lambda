@@ -261,9 +261,7 @@ resource "aws_db_instance" "mydb" {
      LambdaInvokePermission:
        Type: 'AWS::Lambda::Permission'
        Properties:
-         FunctionName: !GetAtt CloudWatchToRDSFunction.A
-
-rn
+         FunctionName: !GetAtt CloudWatchToRDSFunction.Arn
          Action: 'lambda:InvokeFunction'
          Principal: 'events.amazonaws.com'
          SourceArn: !GetAtt CloudWatchEventRule.Arn
