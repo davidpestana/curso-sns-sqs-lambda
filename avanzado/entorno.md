@@ -5,7 +5,7 @@ FROM amazon/aws-cli
 ENV HOME /workspace
 
 # INSTALL WGET AND UTILS
-RUN yum install -y wget openssl jq tar gzip which unzip
+RUN yum install -y wget openssl jq tar gzip which unzip zip
 RUN yum install -y yum-utils
 
 # INSTALL GIT
