@@ -115,6 +115,56 @@ Este tutorial utiliza los servicios DynamoDB y Amazon SNS. El rol **lambda-suppo
 
 6. Elige **Finalizar**.
 
+
+## Creacion de roles por terraform
+
+Alternativamente a lo anterior podemos crear el rol y asignar politicas mediante terraform con el siguiente código.
+
+```
+provider "aws" {
+}
+
+# Create the IAM Role for Lambda
+resource "aws_iam_role" "lambda_support_role" {
+  name = "lambda-support"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Action = "sts:AssumeRole",
+        Effect = "Allow",
+        Principal = {
+          Service = "lambda.amazonaws.com"
+        }
+      }
+    ]
+  })
+}
+
+# Attach AWSLambdaBasicExecutionRole policy
+resource "aws_iam_role_policy_attachment" "basic_execution" {
+  role       = aws_iam_role.lambda_support_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+# Attach AmazonDynamoDBFullAccess policy
+resource "aws_iam_role_policy_attachment" "dynamodb_access" {
+  role       = aws_iam_role.lambda_support_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+}
+
+# Attach AmazonSNSFullAccess policy
+resource "aws_iam_role_policy_attachment" "sns_access" {
+  role       = aws_iam_role.lambda_support_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSNSFullAccess"
+}
+
+output "lambda_support_role_arn" {
+  value = aws_iam_role.lambda_support_role.arn
+}
+```
+
 ## Añadir las dependencias POM a tu proyecto
 
 En este punto, tienes un nuevo proyecto llamado **LambdaCronFunctions**.
