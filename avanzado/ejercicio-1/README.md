@@ -115,6 +115,56 @@ Este tutorial utiliza los servicios DynamoDB y Amazon SNS. El rol **lambda-suppo
 
 6. Elige **Finalizar**.
 
+
+## Creacion de roles por terraform
+
+Alternativamente a lo anterior podemos crear el rol y asignar politicas mediante terraform con el siguiente código.
+
+```
+provider "aws" {
+}
+
+# Create the IAM Role for Lambda
+resource "aws_iam_role" "lambda_support_role" {
+  name = "lambda-support"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Action = "sts:AssumeRole",
+        Effect = "Allow",
+        Principal = {
+          Service = "lambda.amazonaws.com"
+        }
+      }
+    ]
+  })
+}
+
+# Attach AWSLambdaBasicExecutionRole policy
+resource "aws_iam_role_policy_attachment" "basic_execution" {
+  role       = aws_iam_role.lambda_support_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+# Attach AmazonDynamoDBFullAccess policy
+resource "aws_iam_role_policy_attachment" "dynamodb_access" {
+  role       = aws_iam_role.lambda_support_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+}
+
+# Attach AmazonSNSFullAccess policy
+resource "aws_iam_role_policy_attachment" "sns_access" {
+  role       = aws_iam_role.lambda_support_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSNSFullAccess"
+}
+
+output "lambda_support_role_arn" {
+  value = aws_iam_role.lambda_support_role.arn
+}
+```
+
 ## Añadir las dependencias POM a tu proyecto
 
 En este punto, tienes un nuevo proyecto llamado **LambdaCronFunctions**.
@@ -476,6 +526,27 @@ El archivo JAR se encuentra en la carpeta **target** (que es una subcarpeta de l
 **Nota**: Observa el uso del **maven-shade-plugin** en el archivo POM del proyecto. Este plugin es responsable de crear un JAR que contiene las dependencias necesarias. Si intentas empaquetar el proyecto sin este plugin, las dependencias requeridas no se incluirán en el archivo JAR y te encontrarás con una **ClassNotFoundException**.
 
 ## Desplegar la función Lambda
+
+Alternativamente a hacerlo mediante la consola web podemos aplicar por terraform ( previamente comprimir el jar en zip)
+
+```
+
+locals {
+  jar_file = "../target/LambdaCronFunctions-1.0-SNAPSHOT.jar"
+  zip_file = "../target/LambdaCronFunctions-1.0-SNAPSHOT.zip"
+}
+
+resource "aws_lambda_function" "lambda_function_1" {
+    function_name = "cron_formador"
+    role = aws_iam_role.lambda_support_role.arn
+    runtime = "java11"
+    handler = "com.aws.example.Handler::handleRequest"
+    package_type = "Zip"
+    filename = local.zip_file
+    # source_code_hash = filebase64sha256(local.zip_file)
+}
+
+```
 
 1. Abre la consola de Lambda en https://us-east-1.console.aws.amazon.com/lambda/home.
 
